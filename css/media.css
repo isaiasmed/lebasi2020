@@ -1,0 +1,461 @@
+@media only screen and ( max-width: 1400px ) {
+	/* Aquí van los estilos para iPad vertical */
+	.menuder{
+		display:none;
+	}
+	.social {
+		right: 25%;
+		width: 50%;
+	}
+	.menu_barra li a {
+		font-size:1.1em;
+	}
+	.wrap_quienes {
+		max-width: 1450px;
+		width: 90%;
+		margin: 0 auto;
+		padding: 135px 0;
+		box-sizing: border-box;
+	}
+	
+	
+}
+@media only screen and ( max-width: 980px ) {
+	.logo a {
+		width: 150px;
+		height: 150px;
+		z-index: 3;
+		background-size: cover;
+		margin: 0 auto;
+		display: block;
+	}
+	.textoBanner1{
+		max-width:95%;
+		margin:0 auto;
+	}
+	.menu_barra {
+		width: 40%;
+	}
+	.menu_barra.oculto {
+		right: -40%;
+		height: 100%;
+	}
+	.quientomatx {
+		font-size: 20px;
+	}
+	.ganadinerotx {
+		font-size: 1.9em;
+		width: 70%;
+		left: 15% !important;
+	}
+	.infofooter, .footerdatos,.lebasinet {
+		width: 100%;
+		text-align: center;
+		border-bottom: 1px dashed #2287d2;
+		margin: 5px auto;
+	}
+	.footerdatos p{
+		text-align:center;
+	}
+	.lebasinet a{
+		font-size:0.8em;
+	}
+	.wrap_quienes {
+		max-width: 800px;
+		width: 90%;
+		margin: 0 auto;
+		padding: 135px 0;
+		box-sizing: border-box;
+	}
+	.products.columns-3 li {
+		width: 48%;
+		margin:1%;
+	}
+	.paginatexto {
+		width: 80%;
+	}
+}
+@media only screen and ( max-width: 768px ) {
+	/* Aquí van los estilos para iPad vertical */
+	.menuder{
+		display:none;
+	}
+	.textoIzq1 {
+		left: 25%;
+	}
+	.quientomatx {
+		font-size: 25px;
+	}
+	.dhover a {
+		font-size: 15px;
+		line-height: 20px;
+		padding: 5px 15px;
+	}
+	.ganadinerotx {
+		width: 80%;
+		left: 10% !important;
+	}
+
+	.menulogo {
+		height:40px;
+	}
+	.social {
+		width: 34%;
+		left: 33%;
+	}
+	.fijado .social a {
+		font-size: 0.9em;
+	}
+	.social a {
+		font-size: 0.9em;
+		margin: 0px;
+	}
+	.ln1 span {
+		font-size: 3.4em;
+	}
+	.iln2 {
+		font-size: 0.7em;
+	}
+	.iln3 {
+		font-size: 0.9em;
+	}
+	.textoBanner1 {
+		width: 100%;
+		margin: 1% auto;
+		font-size: 0.7em;
+		right: 0;
+		padding: 0 20px;
+		box-sizing: border-box;
+		bottom:3%;
+	}
+	.title-seccion {
+		max-width: 280px;
+		margin: 15px auto;
+		text-align: center;
+		padding: 10px 0;
+		font-size: 2.1em;
+	}
+	.seccion0, .seccion1, .seccion2, .seccion3{
+		padding:5px 0;
+	}
+	.textoIzq1 {
+		width: 90%;
+		left: 5%;
+		top: 2%;
+	}
+	.iln3 ul li{
+		font-size:0.6em;
+	}
+	.quienlotoma li {
+		width: 100%;
+	}
+	.banner4 {
+		min-height: 70vh;
+	}
+	.ganadinerotx {
+		font-size:1.5em;
+	}
+	.barracolor ul li {
+		width: 50%;
+		padding: 0 5px;
+	}
+	.barracolor ul li img{
+		opacity:1;
+	}
+	.menu_barra {
+		width: 70%;
+	}
+	.menu_barra.oculto {
+		right: -70%;
+		height: 100%;
+	}
+	.menu_barra li {
+		padding: 10px 0px;
+		font-size: 0.8em;
+		text-indent: 50px;
+	}
+	.products.columns-3 li {
+		width: 100%;
+		margin-right: 5%;
+	}
+	.wrap_quienes {
+		padding: 8px;
+		margin-top:75px;
+	}
+	.paginatexto {
+		width: 98%;
+		box-sizing: border-box;
+		margin: 30px auto;
+		border-radius: 0;
+		float:none;
+	}
+	.woocommerce-cart-form{
+		padding:5px 15px;
+		overflow:auto;
+		max-width:90%;
+	}
+	.form-row label, .form-row input, .form-row select, .woocommerce-checkout textarea, #billing_entre_calles {
+		width: 100%;
+		text-align: left;
+		padding: 5px 0;
+	}
+	.paginatexto p {
+		font-size: 0.8em;
+		line-height: 1.2em;
+	}
+	.tiendalink a {
+		/* width: 80%; */
+		padding: 10px 5px;
+		font-size: 0.9em;
+		max-width: 80%;
+	}
+	.footerpagina{
+		display:none;
+	}
+	.bannerpagina {
+		height:30vh;
+	}
+	.contacto .label{
+		font-size:0.8em;
+	}
+	.contacto .label, .contacto .input{
+		width:100%;
+	}
+	.bienvenida {
+		width: 95%;
+		max-width:650px;
+		margin:25px auto;
+	}
+	.woocommerce-MyAccount-navigation li{
+		width:calc(100%/3);
+	}
+	.woocommerce-MyAccount-navigation li a {
+		padding: 4px;
+		text-align: center;
+	}
+	.tipo {
+		margin: 0 auto;
+	}
+	.regaqui{
+		display:none;
+	}
+}
+@media only screen and ( max-width: 680px ) {
+	.textoBanner1 {
+		width: 75%;
+		right: 0;
+		bottom: 35%;
+		margin: 0 auto;
+		font-size: 0.4em;
+	}
+	.ln2{
+		margin:0;
+		letter-spacing:4px;
+	}
+	.ln3{
+		margin:0;
+		padding:0;
+	}
+	.seccion0, .seccion1, .seccion2, .seccion3 {
+		min-height: 60px;
+		padding: 10px 0;
+	}
+	.title-seccion {
+		max-width: 480px;
+		margin: 5px auto;
+		font-size: 1.3em;
+	}
+	.banner2, .banner3 {
+		min-height: 140vh;
+	}
+	.enlacesquien li {
+		width: calc(100%/2);
+		float: left;
+		display: block;
+		padding: 5px;
+		box-sizing: border-box;
+		font-size: 0.8em;
+	}
+	.enlacesquien li a{
+		min-height:30px;
+	}
+}
+
+@media only screen and ( max-width: 479px ) {
+	.title-pagina {
+		margin: 10px auto;
+		padding: 10px 0;
+		font-size: 2.5em;
+	}
+	.logo a {
+		width: 150px;
+		height: 150px; 
+	}
+	.ln1 span {
+		font-size: 2.8em;
+		letter-spacing:5px;
+	}
+	.ln1 svg {
+		margin: 0px 5px  5px;
+	}
+	.ln2 {
+		font-size: 3.1em;
+		letter-spacing:3px;
+	}
+	.ln3 {
+		font-size: 2.8em;
+		letter-spacing:2px;
+	}
+	.textoBanner1 {
+		bottom: 15%;
+	}
+	.fijado .menupal a{
+		font-size:1.5em;
+	}
+	.paginatexto p {
+		line-height: 1.2em !important;
+		font-size: 1em !important;
+		width:90%;
+		text-align:left;
+	}
+	.social{
+		display:none;
+	}
+	.paginatexto {
+		width: 95%;
+		padding:15px 5px;
+	}
+	.wrap{
+		padding-top:3px;
+	}
+	.bannerpagina {
+		min-height: 15vh;
+	}
+	.contenidopagina {
+		padding: 10px 0;
+	}
+	.texto {
+		width: 95%;
+		padding: 15px;
+		box-sizing: border-box;
+		margin: 30px auto;
+		font-size: 1.4em;
+	}
+	.texto p{
+		margin:15px 0;
+	}
+	.contenido .wrap_quienes p {
+		font-size: 0.8em;
+		line-height: 1.2em;
+		text-align: left;
+	}
+	.product-name a, .product-name,.product-price,.product-quantity,.product-subtotal{
+		font-size:0.7em;
+	}
+	.product-thumbnail{
+		display:none;
+	}
+	.backStore {
+		max-width: 90%;
+	}
+	/*Faq*/
+	.faq {
+		width: 300px;
+	}
+	#frecuentes {
+		right: -300px;
+		top: 15%;
+	}
+	.faq h3 {
+		font-size: 10px;
+	}
+		
+	/*Carrito*/
+	.checkout-button {
+		padding: 15px 10px;
+		width: 90%;
+	}
+	.pickup-location-field > .select2.select2-container{
+		width:100% !important;
+	}
+	/*Distribuidor*/
+	.wrap_distribuidor .banner_img {
+		width: 100vw;
+		height: 25vh;
+	}
+	#wcfmmp-store .logo_area {
+		top: 10px;
+	}
+	#wcfmmp-store #wcfm_store_header .address {
+		width: 100% !important;
+		left: 0;
+		top: 150px;
+		background: #fff;
+	}
+	.distribuidor_title {
+		font-size: 1rem;
+		padding-top: 10px;
+		display: block;
+		text-align: right;
+		text-shadow: 1px 1px 3px #353535;
+		max-width: 190px;
+		float: right;
+		padding-right: 20px;
+	}
+	#wcfmmp-store .steps ul li{
+		width:100%;
+		text-align:center;
+		border-bottom:1px solid #ddd;
+	}
+	#tabs{
+		margin-top:30px;
+	}
+	.lebasioficial {
+		display:none;
+	}
+	.header_distribuidores h3 {
+		font-size: 1rem;
+		width: 80%;
+		margin:0 auto;
+		padding:5% 10%;
+	}
+	.compra_dist {
+		margin: 150px auto 0;
+	}
+	.products li img {
+		width: 30%;
+		height: auto !important;
+		float: left;
+		min-height: inherit;
+	}
+	.products li h2 {
+		text-align: center;
+		float: left;
+		width: 70%;
+		padding: 0;
+		clear: inherit !important;
+		color: #000 !important;
+		font-size: 1rem !important;
+		font-weight: bold !important;
+	}
+	.price {
+		width: 70%;
+		float: left;
+		font-size: 2rem;
+		text-align: center;
+		margin: 0;
+		font-weight: bold;
+	}
+	.products li a {
+		text-align: center;
+		float: left;
+		width: 100%;
+		padding: 10px 0;
+		margin-bottom: 35px;
+	}
+	.products li {
+		border-bottom: 1px solid #ddd;
+		margin-bottom: 20px !important;
+		display: inline-block;
+	}
+}

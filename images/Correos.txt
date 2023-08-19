@@ -1,0 +1,89 @@
+A9GXXF23ACS7GU7C4G4V
+
+UPS:  9D528B91F7AE990C
+
+
+
+Kaeerym:
+
+Te envio orden para revision de disponiblilidad en sucursales.
+
+
+'FRANCISCO JAVIER PADILLA CONTRERAS' <japadilla@lebasi.com.mx>; 'Flor Vazquez' <cfo@lebasigroup.com>; 'MARTHA SANCHEZ CTR' <msanchez@lebasi.com.mx>; 'Rodrigo Monterrubio Diaz de Leon' <cco@lebasigroup.com>; 'HECTOR PADILLA' <sistemas@lebasigroup.com>
+
+'XOCHITL DEL CARMEN GONZALEZ HERNANDEZ' <contabilidad2@lebasigroup.com>; 'Marcela Ivon Serrano Peñaloza' <contabilidad1@lebasi.com.mx>; 'Kaeerym' <asistentesctr@lebasi.com.mx>; 'Ramon CTR' <contraloria2@lebasi.com.mx>; 'Carlos Alejandro Márquez Covarrubias' <ventasweb@lebasigroup.com>; Yunai Sosa Argaéz <mktdigital@lebasi.com.mx>
+
+PERU
+--------------------------------------------
+'Flor Vazquez' <cfo@lebasigroup.com>; 'Rodrigo Monterrubio Diaz de Leon' <cco@lebasigroup.com>; 'HECTOR PADILLA' <sistemas@lebasigroup.com>; procesos@lebasigroup.com
+
+'XOCHITL DEL CARMEN GONZALEZ HERNANDEZ' <contabilidad2@lebasigroup.com>; 'Marcela Ivon Serrano Peñaloza' <contabilidad1@lebasi.com.mx>; 'Yunai Sosa Argaéz' <mktdigital@lebasi.com.mx>; ventasweb4@lebasigroup.com
+
+
+USA
+-------------------------------------------
+
+'Flor Vazquez' <cfo@lebasigroup.com>; 'Rodrigo Monterrubio Diaz de Leon' <cco@lebasigroup.com; 'HECTOR PADILLA' <sistemas@lebasigroup.com>
+
+'XOCHITL DEL CARMEN GONZALEZ HERNANDEZ' <contabilidad2@lebasigroup.com>; websales@lebasigroup.com
+
+
+
+ARGENTINA
+---------------------------------------------
+'Flor Vazquez' <cfo@lebasigroup.com>; 'Rodrigo Monterrubio Diaz de Leon' <cco@lebasigroup.com; 'HECTOR PADILLA' <sistemas@lebasigroup.com>
+
+'XOCHITL DEL CARMEN GONZALEZ HERNANDEZ' <contabilidad2@lebasigroup.com>; 'Marcela Ivon Serrano Peñaloza' <contabilidad1@lebasi.com.mx>; 'Yunai Sosa Argaéz' <mktdigital@lebasi.com.mx>; ventasweb3@lebasigroup.com
+
+
+
+
+
+
+
+
+
+
+<?php
+require ('../../../../../wp-blog-header.php');
+//Pasamos el titulo a la variable del encabezado
+$seccion='REPORTES';
+$tema='Ventas';
+$titulo='Reporte General de Ventas';
+global $titlem;
+$titlem=$titulo.' &raquo; '.$tema.' | '.$seccion;
+add_filter( 'wp_title',function( $title ){ global $titlem; return $titlem;});
+get_header();?>
+	<!-- Page Content (Contenido) -->
+	<div class="right_col" role="main">
+		<!-- top tiles -->
+		<div>
+			<div class="page-title">
+				<div class="title_left">
+					<h3><?php echo $seccion;?></h3>
+				</div>
+			</div>
+		</div>	
+		
+		<!-- Aqui va el contenido -->
+		<div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><?php echo $tema.' | '.$titulo;?></h2>
+                    <div class="clearfix"></div>
+                </div>
+				<div class="x_content"><?php
+					get_permiso();?>
+				</div>			
+			</div>
+		</div>
+	</div>
+	<!-- End Content -->
+<?php get_footer();?>
+
+
+borrados
+
+
+id	empleado	fecha_solicitud	hora_solicitud	tipo_ausencia	comentarios	status_actual	usuario_alta	usuario_autoriza	usuario_rechaza
+19659		05/06/2018	01:53:05 pm	0	depósito en banco HSBC	2		N/A	N/A

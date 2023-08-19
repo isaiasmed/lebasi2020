@@ -1,0 +1,431 @@
+body {
+	background-image: linear-gradient(rgba(230, 241, 255, 0.65), rgba(151, 203, 249, 0.65)), url('../images/Fondo_Landing page2023.jpg');
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	font-family: 'Raleway', sans-serif;
+}
+	.container.bg-gray {
+		background: #ffffffe6;
+		padding: 50px;
+		box-shadow: inset 3px 3px 180px #7e7e7ea1;
+		margin-top: 35px;
+	}	
+	.bg-gray p {
+		line-height: 18px;
+		font-size: 16px;
+		color: #d68453;
+		text-align: center;
+		padding: 0px 80px;
+		font-weight: 600;
+	}
+	.titulo {
+		text-align: center;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		font-size: 70px;
+		font-weight: bold;
+		color: #4aafd8;
+		font-style: italic;
+	}
+	#msgpromo {
+		background: #d5d5d5;
+		text-align: center;
+		padding: 10px;
+		color: #004582;
+		font-weight: bold;
+		border-bottom: 2px solid #008ed3;
+		box-shadow: 3px 3px 3px #a6a5a5;
+	}
+	#formPromo2022 {
+		background: #ffffff6b;
+		padding: 50px;
+		border: 1px solid #cbcbcb;
+		margin-top: 25px;
+		min-width:620px;
+	}
+	#game-container canvas {
+		margin: 50px auto 50px;
+	}
+	#formPromo2022 label {
+		text-align: right;
+		font-size: 13px;
+		font-weight: bold;
+		color: #959595;
+	}
+	.btn-secondary {
+		color: #fff;
+		border-radius: 20px;
+		padding: 5px 40px;
+	}
+	#registradoPromo h4 {
+		text-align: center;
+		text-shadow: 1px 1px 2px #ffb100;
+		margin: 15px 0px;
+	}
+.element3 {
+	position: fixed;
+	background: #000000de;
+	width: 100%;
+	z-index: 1021;
+	top: 0;
+	height: 100vh;
+	padding:20px;
+	overflow:auto;
+}
+.cerrarimgini {
+	font-size: 34px;
+}
+
+#parrafo1 {
+	font-size: 12px;
+}
+
+#parrafo2 {
+	font-size: 12px;
+}
+.card-img-bottom {
+  color: #fff;
+  height: 20rem;
+  
+  background-size: cover;
+}
+
+h7 {
+	color: red;
+}
+
+h10 {
+	font-size: 12px;
+	color: red;
+}
+
+b {
+	color: black;
+}
+
+body {
+	font-family: 'impact-regular', sans-serif;
+}
+
+
+.boton {
+	text-decoration: none;
+	padding: 10px;
+	font-weight: 600;
+	font-size: 20px;
+	color: #ffffff;
+	background-color: #1883ba;
+	border-radius: 6px;
+	border: 2px solid #0016b0;
+}
+
+.boton2 {
+	text-decoration: none;
+	padding: 8px;
+	font-weight: 600;
+	font-size: 18px;
+	color: #ffffff;
+	background-color: #1883ba;
+	border-radius: 5px;
+	border: 2px solid #0016b0;
+}
+
+h7 {
+	color: red;
+}
+
+h10 {
+	font-size: 12px;
+	color: red;
+}
+
+b {
+	color: black;
+}
+
+body {
+	font-family: 'impact-regular', sans-serif;
+}
+
+.dropzone.dz-clickable {
+	cursor: pointer;
+	background: none !important;
+	border: 3px dashed #b9b9b9 !important;
+	border-radius: 15px;
+}
+
+.cardcontainer:hover>.content {
+	height: 200px
+}
+
+.footer2 {
+	width: 100%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #f7f7f7;
+	position: relative;
+	border-top: 1px solid #ddd;
+	padding-top: 14px;
+}
+
+.votocontaimer p {
+	font-size: 0.7em;
+	background: ;
+	color: #1883ba;
+	margin: 5px;
+	font-weight: bold;
+}
+
+.votocontaimer {
+	background: #eaeaea;
+	padding: 8px;
+	margin-bottom: 12px;
+	border: 1px solid #cacaca;
+	border-radius: 4px;
+}
+#login i,#login2 i {
+	color: #1883ba;
+}
+
+
+#heart {
+	cursor: pointer
+}
+
+.like {
+	float: right;
+	font-size: 22px;
+	position: relative;
+	top: 20px;
+	color: #333333
+}
+
+.fa-gratipay {
+	margin-right: 10px;
+	transition: 0.5s
+}
+
+.fa-gratipay:hover {
+	color: #E74C3C
+}
+
+.txt3 0{
+	position: relative;
+	top: 18px;
+	font-size: 14px;
+	font-family: 'Raleway',serif;
+	font-weight: bold;
+	font-size: 0.8em;
+	color: #3e3d3d;
+	background: #eee;
+	padding: 10px 5px;
+}
+
+.comments {
+	float: right;
+	cursor: pointer
+}
+
+.fa-clock,
+.fa-comments {
+	margin-right: 7px
+}
+
+.simobololike{
+	text-align: left;
+	
+	
+}
+
+#div_descargar {
+	box-sizing: border-box;
+	justify-content: center;
+	background-color: #EBEBEB;
+	border-radius: 20px; 
+	width: 500px;
+	height: 175px;
+	margin-left: 60vh;
+	border: 2px solid black;
+	position: relative;
+}
+#div_2 {
+	justify-content: center;
+	background-color: #f6e1c5; 
+	width: 500px;
+	height: 31px;
+	border: 2px solid black;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	margin-top: 15px;
+	padding-top: 0px;
+}
+#btn_des {
+	background-color: #EBEBEB;
+}
+#text_des {
+	font-size: 35px;
+	font-family: sans-serif;
+}
+#icon_pdf{
+	margin-bottom: 10px;
+}
+#des_enca{
+	color: black;
+	margin-top: 0px; 
+	padding-top: 0px; 
+	font-family: Edwardian Script ITC;
+	font-size: 22px;
+	
+}
+
+.likegallery {
+	color: #5b5b5b;
+	text-decoration: none !important;
+	text-align: right;
+	font-size: 20px;
+}
+.linkfoto {
+	text-decoration: none;
+}
+
+.swal2-confirm.swal2-styled {
+	background: none !important;
+}
+#alertgaleria2 {
+	background: #dc143c;
+	color: #fff;
+	font-weight: bold;
+}
+#concursar2 {
+	color: #dc143c;
+	text-decoration: none;
+	font-weight: bold;
+}
+.zonadescarga a {
+	background: #00ca29;
+	color: #fff;
+	width: 100%;
+	text-decoration: navajowhite;
+	font-size: 1em;
+	border-radius: 5px;
+	border: 1px solid #238837;
+	box-shadow: 2px 3px 4px #626161;
+}
+
+#login,#login2 {
+	background: #fff;
+	border: 1px solid #dadce0;
+	border-radius: 5px;
+	padding: 5px 11px;
+	margin-top: 10px;
+	font-size: 0.9em;
+	font-weight: 600;
+	color: #4f5255;
+	font-family: 'Google Sans',arial,sans-serif;
+}
+
+.votabtn {
+	background: #f00;
+	color: #fff;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+.a2a_default_style a{
+	float:right !important;
+}
+
+.sharebtn {
+	background: #cecece;
+	height: 33px;
+	border: 1px solid #aaa;
+	width: 32px;
+	line-height: 33px !important;
+	border-radius: 5px;
+	color: #424242;
+	margin-right: 2px;
+}
+
+@media (max-width: 767.98px) {
+	.section-heading .section-heading-lower{
+		font-size:2rem;
+	}
+	#destino2 h4{
+		font-size:1rem;
+	}
+	#destino2 h3{
+		font-size:1.3rem;
+	}
+	.boton {
+		padding: 5px 10px;
+		font-weight: 400;
+		font-size: 18px;
+		margin-top:25px;
+	}
+}
+
+.btn-flotante234 {
+		font-size: 16px; /* Cambiar el tamaño de la tipografia */
+		text-transform: uppercase; /* Texto en mayusculas */
+		font-weight: bold; /* Fuente en negrita o bold */
+		color: #ffffff; /* Color del texto */ 
+		border-radius: 5px; /* Borde del boton */
+		letter-spacing: 2px; /* Espacio entre letras */
+		background-color: #E91E63; /* Color de fondo */
+		padding: 18px 30px; /* Relleno del boton */
+		position: fixed;
+		bottom: 40px; 
+		right: 40px;
+		transition: all 300ms ease 0ms;
+		box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+		z-index: 99;
+	}
+	.btn-flotante234:hover {
+		background-color: skyblue; /* Color de fondo al pasar el cursor */
+		box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+		transform: translateY(-7px);
+	}
+	@media only screen and (max-width: 600px) {
+		.btn-flotante234 {
+			font-size: 11px;
+			padding: 12px 10px;
+			bottom: 20px;
+			right: 10px;
+		}
+	}
+
+#titulodescargas{
+            font-size: 40px;
+            color: black;
+         
+        }	
+	.mensaje{
+		font-size: 40px;
+		text-align: center;
+		color: #000;
+	}
+		
+		
+@media (max-width: 991.98px) { 
+	.bg-gray p {
+		padding: 0px 10px;
+	}
+	.container.bg-gray {
+		padding: 10px;
+		max-width:95%;
+		margin: 15px auto;
+	}
+	
+	#formPromo2022 {
+		padding: 10px;
+	}
+	
+	#formPromo2022 label {
+		text-align: left;
+	}
+	.mensaje{
+		font-size: 20px;
+	}
+}

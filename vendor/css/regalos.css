@@ -1,0 +1,40 @@
+.modalregalos {
+	background: #000000b3;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 9999;
+}
+.regalos {
+	background: #fff;
+	width: 90%;
+	max-width: 490px;
+	display: block;
+	margin: 0 auto;
+	top: 5%;
+	position: relative;
+}
+.woocommerce img, .woocommerce-page img {
+	height: auto;
+	max-width: 100%;
+	max-height: inherit;
+}
+
+.giftleb{
+	cursor:pointer;
+}
+
+.giftleb:hover{
+	background:#ddd;
+}
+
+.card.giftleb.active {
+	background: #dfffe4;
+	border: 1px solid #138a01;
+}
+.card.giftleb.disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
