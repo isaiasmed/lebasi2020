@@ -3,7 +3,7 @@ add_action( 'wp_enqueue_scripts', 'wpdocs_inscripcion' );
 function wpdocs_inscripcion() {
 	global $pagenow;
 	global $wp_query;
-	$pagename=$wp_query->query['pagename'];
+	$pagename=isset($wp_query->query['pagename'])?$wp_query->query['pagename']:'';
 	if($pagename=="inscripcion"){
 		wp_register_script('inscripcion', get_stylesheet_directory_uri().'/vendor/js/inscripcion.js', array('jquery'), '1.1'.date('YmdHis'),true);
 		wp_enqueue_script('inscripcion');

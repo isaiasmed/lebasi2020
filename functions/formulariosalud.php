@@ -4,7 +4,7 @@ add_action( 'wp_enqueue_scripts', 'wpdocs_salud' );
 function wpdocs_salud() {
 	global $pagenow;
 	global $wp_query;
-	$pagename=$wp_query->query['pagename'];
+	$pagename=isset($wp_query->query['pagename'])?$wp_query->query['pagename']:'';
 	if($pagename=="contacta-a-nuestros-especialistas"){
 		wp_register_script('salud', get_stylesheet_directory_uri().'/vendor/js/salud.js', array('jquery'), '1.1'.date('YmdHis'),true);
 		wp_enqueue_script('salud');

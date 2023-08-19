@@ -128,18 +128,22 @@
 					}
 					
 					$country=getPaisIp();
-					$siglas=$country->countryCode;
-					if($siglas=='AU'){
-						$siglas='PE';
+					
+					if($country->status=='success'){
+						$siglas=$country->countryCode;
+						if($siglas=='AU'){
+							$siglas='PE';
+						}
+					}else{
+						$siglas='MX';
 					}
 					switch($siglas){
 						case 'MX':
 							$paist='México';
 							$datos='Tel. 449 922 2222
 								</br>ventasweb@lebasigroup.com
-								</br>Corporativo: Av. Las Américas 1604
-								</br>Jardines de Santa Elena,
-								</br>20236 Aguascalientes, Ags.
+								</br>Av Aguascalientes
+								</br>20238 Aguascalientes, Ags.
 								</br>México';
 							$phone="5214491555144";
 							

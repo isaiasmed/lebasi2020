@@ -804,6 +804,8 @@ function ba_rewrite() {
    add_rewrite_rule('^fr/microsite/([^/]*)/?' , 'index.php?pagename=le-micrositio&lang=fr&numsocio=$matches[1]','top');
 
 	add_rewrite_rule('^api/([^/]*)/?' , 'api.php','top');
+	
+	
 
 }
 add_action( 'init', 'ba_rewrite' );
@@ -818,16 +820,19 @@ function customer_country_base() {
 		}
 	}*/
 	$country=getPaisIp();
-	//echo '<pre>'.print_r($country,1).'</pre>';
+	
 	if($country->status=='success'){
 		$siglas=$country->countryCode;
 		if($siglas=='AU'){
 			$siglas='PE';
 		}
+	}else{
+		$siglas='MX';
 	}
 	//echo $siglas;
 	wcpbc_set_woocommerce_country($siglas);
-
+	
+	
 }
 
 add_action( 'wp', 'ts_redirect_product_pages', 99 );
@@ -842,8 +847,8 @@ function ts_redirect_product_pages() {
 }
  
 
-//remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
-//remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
+remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 
 add_filter('query_vars', function( $vars ){
     $vars[] = 'pagename'; 
@@ -936,6 +941,10 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
 add_action('wp_ajax_nopriv_getAsignacion','getAsignacion');
 add_action('wp_ajax_getAsignacion','getAsignacion');
 function getAsignacion(){
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+	
 	$slider_products_q = new WP_Query([
 		'posts_per_page'    => -1,
 		'post_type'         => 'micrositios',
@@ -947,7 +956,7 @@ function getAsignacion(){
 		while($slider_products_q->have_posts()):
 			$slider_products_q->the_post();
 			$dist=get_field('dist');
-			$pais=get_field(pais);
+			$pais=get_field('pais');
 			$empObj = getDatoEmpresarioLebasi($dist,$pais);
 			$image = get_field('foto');
 			$image_url = $image['sizes']['thumbnail'];

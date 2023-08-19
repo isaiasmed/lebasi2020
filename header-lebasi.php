@@ -151,7 +151,7 @@
 </head>
 <body><?php 
 $post = $wp_query->get_queried_object();
-$pagename = $post->post_name;
+$pagename=isset($wp_query->query['pagename'])?$wp_query->query['pagename']:'';
 $lastpopup=false;
 	if(isset($_COOKIE['lebasi_popup'])) { 
 		$lastpopup = $_COOKIE['lebasi_popup'];

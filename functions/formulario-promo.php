@@ -4,7 +4,7 @@ add_action( 'wp_enqueue_scripts', 'wpdocs_promo' );
 function wpdocs_promo() {
 	global $pagenow;
 	global $wp_query;
-	$pagename=$wp_query->query['pagename'];
+	$pagename=isset($wp_query->query['pagename'])?$wp_query->query['pagename']:'';
 	if($pagename=="promocion"){
 		wp_register_script('promo', get_stylesheet_directory_uri().'/vendor/js/promo.js', array('jquery'), '1.1'.date('YmdHis'),true);
 		wp_enqueue_script('promo');
