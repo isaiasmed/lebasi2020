@@ -127,12 +127,12 @@
 							</tr>
 							<tr>
 								<th>Ciudad</th>
-								<td><input name="ciudad" type="text" value="<?php echo $ciudad;?>" class="form-control"></td>
+								<td><input id="municipio" name="ciudad" type="text" value="<?php echo $ciudad;?>" class="form-control"></td>
 							</tr>
 							<tr>
 								<th>Estado</th>
 								<td>
-									<select name="estado" class="form-control"><?php
+									<select id="estado" name="estado" class="form-control"><?php
 									foreach($estados as $ee){?>
 										<option value="<?php echo $ee;?>"><?php echo $ee;?></option><?php
 									} ?>
@@ -143,8 +143,9 @@
 							<tr>
 								<th style="line-height: 13px;">Uso de CFDI<br><span style="color:#f00;font-size: 11px;line-height: 10px;font-weight: normal;">Se valida de acuerdo al regimen fiscal</span></th>
 								<td>
-									<?php $optionsgasto=get_tipo_gasto(); //echo '<pre>'.print_r($optionsgasto,1).'</pre>';?>
-									<select class="form-control" name="tipogasto" required><?php
+									<?php $optionsgasto=get_tipo_gasto();?>
+									<select class="form-control" name="tipogasto" required>
+										<option value="">Selecciona Tipo de Gasto</option><?php
 										foreach($optionsgasto as $oo){?>
 											<option rel="<?php echo implode(",",$oo["regimenes"]);?>" value="<?php echo $oo['key'];?>"><?php echo $oo['name'];?></option><?php				
 										}?>					
@@ -153,7 +154,7 @@
 							</tr>
 							<tr>
 								<th>Enviar a:</th>
-								<td><input name="email" type="text" value="<?php echo $email;?>" class="form-control"></td>
+								<td><input id="email" name="email" type="text" value="<?php echo $email;?>" class="form-control"></td>
 							</tr>
 							<tr>
 								<th>Forma de pago:</th>

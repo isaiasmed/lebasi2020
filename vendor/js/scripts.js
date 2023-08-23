@@ -348,6 +348,9 @@ $(document).ready(function(){
 				$('#razon').val(response.datas.Razon);
 				$('#rfc').val(response.datas.RFC);
 				$('#cp').val(response.datas.CodPostal);
+				$('#estado').val(response.datas.Estado);
+				$('#municipio').val(response.datas.Municipio);
+				$('#email').val(response.datas.Email);
 				
 				$('#remisionf').fadeOut();
 				$('#facturasol').fadeIn();

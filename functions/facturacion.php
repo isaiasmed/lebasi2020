@@ -82,7 +82,7 @@ function get_tipo_gasto(){
 add_action('wp_ajax_nopriv_getremisionf','getremisionf');
 add_action('wp_ajax_getremisionf','getremisionf');
 function getremisionf(){
-	$query="select r.ClaveSucursal,r.NumRemision,concat(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Razon,RFC,CodPostal,p.ClaveProducto,p.DescrProd,dr.Cantidad,dr.Precio,dr.Descuento,p.ClaveSat,p.ClaveUnidad,p.IVA from mex_remision r
+	$query="select r.ClaveSucursal,r.NumRemision,concat(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Razon,RFC,CodPostal,Estado,Municipio,Email,p.ClaveProducto,p.DescrProd,dr.Cantidad,dr.Precio,dr.Descuento,p.ClaveSat,p.ClaveUnidad,p.IVA from mex_remision r
 		left join app_empresario e 
 		on r.NumEmpresario = e.NumEmpresario and r.Paisempresario = e.ClavePais
 		left join mex_det_remision dr
@@ -100,7 +100,10 @@ function getremisionf(){
 			"RFC"=>$rem[0]['RFC'],
 			"CodPostal"=>$rem[0]['CodPostal'],
 			"ClaveSucursal"=>$rem[0]['ClaveSucursal'],
-			"NumRemision"=>$rem[0]['NumRemision']
+			"NumRemision"=>$rem[0]['NumRemision'],
+			"Municipio"=>$rem[0]['Municipio'],
+			"Estado"=>$rem[0]['Estado'],
+			"Email"=>$rem[0]['Email'],
 		);
 		$_POST['datas']=$remp;
 		foreach($rem as $c){
