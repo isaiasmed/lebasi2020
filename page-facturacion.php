@@ -104,11 +104,11 @@
 						<table class="table table-bordered">
 							<tr>
 								<th width="40%" style="line-height: 13px;">Nombre ó Razon Social <br><span style="color:#f00;font-size: 11px;line-height: 10px;font-weight: normal;">Deben capturarse en mayúsculas y sin acentos, sin el régimen capital o societario, si se trata de una persona moral, tal cual aparece en la Constancia de Situación Fiscal.</span></th>
-								<td><input id="razon" style="width: 100%;line-height: 30px;" name="razon" type="text" value="<?php echo $razon;?>"></td>
+								<td><input class="form-control" id="razon" style="width: 100%;line-height: 30px;" name="razon" type="text" value="<?php echo $razon;?>"></td>
 							</tr>
 							<tr>
 								<th>RFC</th>
-								<td><input id="rfc" name="rfc" type="text" value="<?php echo $rfc;?>"></td>
+								<td><input class="form-control" id="rfc" name="rfc" type="text" value="<?php echo $rfc;?>"></td>
 							</tr>
 							<tr>
 								<th>Regimen Fiscal</th>
@@ -172,14 +172,9 @@
 					} ?>
 					<input type="hidden" name="action" value="ajaxgetfactura">
 					<input type="hidden" name="order" value="<?php echo $orderid;?>"><?php
-					if($data['status']=='processing' || $data['status']=='completed'){
-						//echo '-->'.get_post_meta( $orderid, 'facturada', true );
-						if(get_post_meta( $orderid, 'facturada', true )==''){?>
-							<button class="button">Facturar</button><?php
-						}
-					}else{
-						echo '<div class="alert">Este pedido no puede ser facturado debido a que aun no se ha cubierto el importe</div>';
-					}?>
+					//if($data['status']=='processing' || $data['status']=='completed'){?>
+						<button class="button">Facturar</button><?php
+					//}?>
 				</form>
 				<div id="facturaresults">
 				
