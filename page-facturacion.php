@@ -154,7 +154,7 @@
 							</tr>
 							<tr>
 								<th>Enviar a:</th>
-								<td><input id="email" name="email" type="text" value="<?php echo $email;?>" class="form-control"></td>
+								<td><input id="email" name="email" type="email" value="<?php echo $email;?>" class="form-control" required></td>
 							</tr>
 							<tr>
 								<th>Forma de pago:</th>
@@ -174,7 +174,7 @@
 					<input type="hidden" name="action" value="ajaxgetfactura">
 					<input type="hidden" name="order" value="<?php echo $orderid;?>"><?php
 					//if($data['status']=='processing' || $data['status']=='completed'){?>
-						<button class="button">Facturar</button><?php
+						<button class="btn btn-primary btn-xl">Facturar</button><?php
 					//}?>
 				</form>
 				<div id="facturaresults">

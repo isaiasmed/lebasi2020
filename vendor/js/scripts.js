@@ -360,6 +360,12 @@ $(document).ready(function(){
 			}
 		});
 		return false;
+	}).on('submit','#facturasol',function(){
+		if(xhr!=null){xhr.abort();}
+		xhr=$.post(ajaxurl,$(this).serialize(),function(response){
+			console.log(response);
+		});
+		return false;
 	});
 	/************************************************************************/
 	

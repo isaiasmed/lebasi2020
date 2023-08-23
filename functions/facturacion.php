@@ -116,3 +116,10 @@ function getremisionf(){
 	}
 	wp_send_json($_POST);
 }
+
+add_action('wp_ajax_ajaxgetfactura','ajaxgetfactura');
+add_action('wp_ajax_nopriv_ajaxgetfactura','ajaxgetfactura');
+
+function ajaxgetfactura(){
+	wp_send_json($_POST);
+}
