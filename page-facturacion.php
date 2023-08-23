@@ -108,7 +108,7 @@
 							</tr>
 							<tr>
 								<th>RFC</th>
-								<td><input class="form-control" id="rfc" name="rfc" type="text" value="<?php echo $rfc;?>"></td>
+								<td><input id="rfc" name="rfc" type="text" value="<?php echo $rfc;?>" class="form-control"></td>
 							</tr>
 							<tr>
 								<th>Regimen Fiscal</th>
@@ -123,11 +123,11 @@
 							</tr>
 							<tr>
 								<th style="line-height: 13px;">Código Postal del Domicilio Fiscal <br><span style="color:#f00;font-size: 11px;line-height: 10px;font-weight: normal;">El Código Postal debe coincidir exactamente, tal cual aparece en la Constancia de Situación Fiscal</span></th>
-								<td><input id="cp" name="cp" type="text" value="<?php echo $cp;?>"></td>
+								<td><input id="cp" name="cp" type="text" value="<?php echo $cp;?>" class="form-control"></td>
 							</tr>
 							<tr>
 								<th>Ciudad</th>
-								<td><input name="ciudad" type="text" value="<?php echo $ciudad;?>"></td>
+								<td><input name="ciudad" type="text" value="<?php echo $ciudad;?>" class="form-control"></td>
 							</tr>
 							<tr>
 								<th>Estado</th>
@@ -153,7 +153,7 @@
 							</tr>
 							<tr>
 								<th>Enviar a:</th>
-								<td><input name="email" type="text" value="<?php echo $email;?>"></td>
+								<td><input name="email" type="text" value="<?php echo $email;?>" class="form-control"></td>
 							</tr>
 							<tr>
 								<th>Forma de pago:</th>

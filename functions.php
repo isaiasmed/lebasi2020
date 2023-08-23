@@ -2646,35 +2646,35 @@ function revisarem(){
 add_action('wp_ajax_premioindi','premioindi');
 add_action('wp_ajax_nopriv_premioindi','premioindi');
 function premioindi(){
-		/*ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);*/
-	
-		global $wpdb;
-		$query="select * from {$wpdb->prefix}premiospromo where level != 0 and stock > 0 ORDER BY RAND() LIMIT 1;";
-		$res=$wpdb->get_row($query,ARRAY_A);
-		$last[]=$wpdb->last_error;
-		$uni=uniqid();
-		$wpdb->update($wpdb->prefix.'premiospromo',array("stock"=>$res['stock']-1),array('id'=>$res['id']));
-		$last[]=$wpdb->last_error;
-		$wpdb->insert($wpdb->prefix.'promojul23',array(
-			"uniqid"=>$uni,
-			"premio"=>$res['premio'],
-			"nombre"=>$_POST['nombre'],
-			"correo"=>$_POST['correo'],
-			"celular"=>$_POST['telefono'],
-			"remision"=>$_POST['remision'],
-		));
-		$last[]=$wpdb->last_error;
-		wp_send_json(array(
-			"query"=>$query,
-			"res"=>$res,
-			"level"=>(int)$res['level'],
-			"grados"=>((($res['level']*1)-1)*(360/14))+7,
-			//"grados"=>(((1*1)-1)*(360/14))+7,
-			"uniqid"=>$uni,
-			"last"=>$last
-		));
+	/*ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);*/
+
+	global $wpdb;
+	$query="select * from {$wpdb->prefix}premiospromo where level != 0 and stock > 0 ORDER BY RAND() LIMIT 1;";
+	$res=$wpdb->get_row($query,ARRAY_A);
+	$last[]=$wpdb->last_error;
+	$uni=uniqid();
+	$wpdb->update($wpdb->prefix.'premiospromo',array("stock"=>$res['stock']-1),array('id'=>$res['id']));
+	$last[]=$wpdb->last_error;
+	$wpdb->insert($wpdb->prefix.'promojul23',array(
+		"uniqid"=>$uni,
+		"premio"=>$res['premio'],
+		"nombre"=>$_POST['nombre'],
+		"correo"=>$_POST['correo'],
+		"celular"=>$_POST['telefono'],
+		"remision"=>$_POST['remision'],
+	));
+	$last[]=$wpdb->last_error;
+	wp_send_json(array(
+		"query"=>$query,
+		"res"=>$res,
+		"level"=>(int)$res['level'],
+		"grados"=>((($res['level']*1)-1)*(360/14))+7,
+		//"grados"=>(((1*1)-1)*(360/14))+7,
+		"uniqid"=>$uni,
+		"last"=>$last
+	));
 }
 
 function db($sql){
