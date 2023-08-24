@@ -23,7 +23,7 @@
 		<div class="row mt-5 principal">
 			<div>
 				<h2>Bienvenido a la página de facturación de Lebasi en México</h2>
-				Servicio ofrecido por Swiss Group EGC  <a href="#" class="btn btn-lnk ml-1" onclick="window.location.reload(true); return false;"> Regresar a otra remisión</a><?php
+				Servicio ofrecido por Swiss Group EGC  <a href="#" class="btn btn-lnk ml-1" style="color: #f00;text-decoration: underline;" onclick="window.location.reload(true); return false;"><i class="fa fa-undo"></i> Regresar</a><?php
 				$estados=array(
 					'AG' => 'AGUASCALIENTES',
 					'BN' => 'BAJA CALIFORNIA NORTE',
