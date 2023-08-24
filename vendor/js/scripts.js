@@ -305,7 +305,10 @@ $(document).ready(function(){
 						</tr>
 				`;
 				$.each(response.items,function(a,b){
+					total=((b.Precio*b.Cantidad)-b.Descuento);
+					total=total.toFixed(2);
 					$items+=`
+					
 						<tr>
 							<td>`+b.ClaveSat+`</td>
 							<td>`+b.ClaveUnidad+`</td>
@@ -314,7 +317,7 @@ $(document).ready(function(){
 							<td>`+b.DescrProd+`</td>
 							<td>`+b.Precio+`</td>
 							<td>`+b.Descuento+`</td>
-							<td>`+b.ClaveProducto+`</td>
+							<td>`+ total +`</td>
 						</tr>
 					`
 				});
@@ -351,6 +354,7 @@ $(document).ready(function(){
 				$('#estado').val(response.datas.Estado);
 				$('#municipio').val(response.datas.Municipio);
 				$('#email').val(response.datas.Email);
+				$('#order').val(response.datas.ClaveSucursal + '-' + response.datas.NumRemision);
 				
 				$('#remisionf').fadeOut();
 				$('#facturasol').fadeIn();
@@ -361,9 +365,19 @@ $(document).ready(function(){
 		});
 		return false;
 	}).on('submit','#facturasol',function(){
+	$('#facturaresults').html('<i class="fa fa-spin fa-refresh"></i> Procesando tu factura espera un momento...');
 		if(xhr!=null){xhr.abort();}
 		xhr=$.post(ajaxurl,$(this).serialize(),function(response){
 			console.log(response);
+			if(response.respuesta_factura.response=="success"){
+				
+			}else{
+				$('#facturaresults').html(`
+					<div class="error_fact">
+						` + response.respuesta_factura.message.message +`
+					</div>
+				`);
+			}
 		});
 		return false;
 	});

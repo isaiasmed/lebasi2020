@@ -804,8 +804,8 @@ function ba_rewrite() {
    add_rewrite_rule('^fr/microsite/([^/]*)/?' , 'index.php?pagename=le-micrositio&lang=fr&numsocio=$matches[1]','top');
 
 	add_rewrite_rule('^api/([^/]*)/?' , 'api.php','top');
-	
-	
+	$template = str_replace( '%2F', '/', rawurlencode( get_template() ) );
+	add_rewrite_rule('^facturas/pdf/([^/]*)/?','wp-content/themes/lebasi2020/functions/pdf.php?uid=$matches[1]','top');
 
 }
 add_action( 'init', 'ba_rewrite' );
@@ -2679,7 +2679,9 @@ function premioindi(){
 
 function db($sql){
 	//echo $sql;
-	$mysqli = new mysqli('localhost', 'lebasi_app', 'Lactoserum22###', 'lebasi_app');
+	//$mysqli = new mysqli('localhost', 'lebasi_app', 'Lactoserum22###', 'lebasi_app');
+	$mysqli = new mysqli('localhost:10016', 'root', 'root', 'lebasi_app');
+	
 	mysqli_set_charset($mysqli, 'utf8');
 	if(!$mysqli) {
 		echo "Error: No se ha podido conectar a la base de datos\n";
@@ -2712,4 +2714,3 @@ function disable_product_purchase($purchasable, $product) {
 	}
 	return $purchasable;
 }
-

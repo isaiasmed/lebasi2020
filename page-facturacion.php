@@ -11,6 +11,13 @@
 		#rem td{
 			font-size:12px;
 		}
+		.error_fact {
+			background: #e8d1d1;
+			color: #ca1c1c;
+			padding: 20px;
+			border: 1px dashed;
+			border-radius: 8px;
+		}
 	</style>
 	<div class="container">
 		<div class="row mt-5 principal">
@@ -104,11 +111,11 @@
 						<table class="table table-bordered">
 							<tr>
 								<th width="40%" style="line-height: 13px;">Nombre ó Razon Social <br><span style="color:#f00;font-size: 11px;line-height: 10px;font-weight: normal;">Deben capturarse en mayúsculas y sin acentos, sin el régimen capital o societario, si se trata de una persona moral, tal cual aparece en la Constancia de Situación Fiscal.</span></th>
-								<td><input class="form-control" id="razon" style="width: 100%;line-height: 30px;" name="razon" type="text" value="<?php echo $razon;?>"></td>
+								<td><input class="form-control" id="razon" style="width: 100%;line-height: 30px;" name="razon" type="text" value="<?php echo $razon;?>" required></td>
 							</tr>
 							<tr>
 								<th>RFC</th>
-								<td><input id="rfc" name="rfc" type="text" value="<?php echo $rfc;?>" class="form-control"></td>
+								<td><input id="rfc" name="rfc" type="text" value="<?php echo $rfc;?>" required class="form-control"></td>
 							</tr>
 							<tr>
 								<th>Regimen Fiscal</th>
@@ -123,16 +130,17 @@
 							</tr>
 							<tr>
 								<th style="line-height: 13px;">Código Postal del Domicilio Fiscal <br><span style="color:#f00;font-size: 11px;line-height: 10px;font-weight: normal;">El Código Postal debe coincidir exactamente, tal cual aparece en la Constancia de Situación Fiscal</span></th>
-								<td><input id="cp" name="cp" type="text" value="<?php echo $cp;?>" class="form-control"></td>
+								<td><input id="cp" name="cp" type="text" value="<?php echo $cp;?>" class="form-control" required></td>
 							</tr>
 							<tr>
 								<th>Ciudad</th>
-								<td><input id="municipio" name="ciudad" type="text" value="<?php echo $ciudad;?>" class="form-control"></td>
+								<td><input id="municipio" name="ciudad" type="text" value="<?php echo $ciudad;?>" class="form-control" required></td>
 							</tr>
 							<tr>
 								<th>Estado</th>
 								<td>
-									<select id="estado" name="estado" class="form-control"><?php
+									<select id="estado" name="estado" class="form-control" required>
+										<option value="">Selecciona el Estado</option><?php
 									foreach($estados as $ee){?>
 										<option value="<?php echo $ee;?>"><?php echo $ee;?></option><?php
 									} ?>
@@ -172,7 +180,7 @@
 						</table><?php
 					} ?>
 					<input type="hidden" name="action" value="ajaxgetfactura">
-					<input type="hidden" name="order" value="<?php echo $orderid;?>"><?php
+					<input id="order" type="hidden" name="order" value=""><?php
 					//if($data['status']=='processing' || $data['status']=='completed'){?>
 						<button class="btn btn-primary btn-xl">Facturar</button><?php
 					//}?>
