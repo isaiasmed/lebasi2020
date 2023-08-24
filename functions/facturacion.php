@@ -275,7 +275,7 @@ function create_conceptos($order){
 	$orden=explode("-",$order);
 	$NumRemision=$orden[1];
 	$ClaveSucursal=$orden[0];
-	$query="select *,dr.Descuento as Descuenta from mex_det_remision dr inner join mex_producto p on dr.ClaveProducto = p.ClaveProducto where dr.ClaveSucursal='".$ClaveSucursal."' and dr.NumRemision=".$NumRemision;
+	$query="select *,dr.Descuento as Descuenta,dr.Precio as Precio from mex_det_remision dr inner join mex_producto p on dr.ClaveProducto = p.ClaveProducto where dr.ClaveSucursal='".$ClaveSucursal."' and dr.NumRemision=".$NumRemision;
 	$res=db($query);
 	if($res){
 		foreach($res as $rr){
