@@ -2670,8 +2670,21 @@ function premioindi(){
 
 function db($sql){
 	//echo $sql;
-	$mysqli = new mysqli('localhost', 'lebasi_app', 'Lactoserum22###', 'lebasi_app');
-	//$mysqli = new mysqli('localhost:10016', 'root', 'root', 'lebasi_app');
+	$domain=$_SERVER['SERVER_NAME'];
+	
+	$host='localhost';
+	$user='lebasi_app';
+	$db='lebasi_app';
+	$pass='Lactoserum22###';	
+	
+	if($domain=='lebasi.local'){
+		$host='localhost:10016';
+		$user='root';
+		$db='lebasi_app';
+		$pass='root';
+	}
+	$mysqli = new mysqli($host, $user, $pass, $db);
+	
 	mysqli_set_charset($mysqli, 'utf8');
 	if(!$mysqli) {
 		echo "Error: No se ha podido conectar a la base de datos\n";

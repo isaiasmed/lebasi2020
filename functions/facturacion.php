@@ -191,6 +191,10 @@ function create_cliente($datos){
 add_action('wp_ajax_reenviofactura','reenviofactura');
 add_action('wp_ajax_nopriv_reenviofactura','reenviofactura');
 function reenviofactura(){
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+	
 	$dir = dirname( __FILE__ );
 	$uid=$_POST['uid'];
 	$url3=site_url().'/facturas/pdf/'.$uid;

@@ -295,6 +295,7 @@ $(document).ready(function(){
 					$('#remisionf').fadeOut();
 					$('#facturaresults').html(`
 						<div class="alert">Este pedido ya se encuentra facturado</div><br>
+						<div>Almacen:`+response.sucursal+` Remisión: `+ response.NumRemision+`</div>
 						<form id="reenviofacturaform">
 							<div class="form">
 								<input type="email" id="mailreenvio" name="email" class="mailnew form-control" value="" placeholder="Correo para reenvio de factura" required>
@@ -380,9 +381,14 @@ $(document).ready(function(){
 		});
 		return false;
 	}).on('submit','#reenviofacturaform',function(){
+		$('.mensajereenvio').remove();
+		$('#reenviofactura').html('<i class="fa fa-refresh fa-spin"></i> Enviando Factura').prop('disabled',true);
 		if(xhr!=null){xhr.abort();}
 		xhr=$.post(ajaxurl,$(this).serialize(),function(response){
 			console.log(response);
+			$('#mailreenvio').val('');
+			$('#reenviofactura').html('Reenviar Factura').prop('disabled',false);
+			$('#facturaresults').append('<span class="mensajereenvio">Se ha enviado la factura, revisa tu bandeja de entrada de correo, el correo puede estar en SPAM.</span>');
 		});
 		return false;
 	}).on('submit','#facturasol',function(){

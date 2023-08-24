@@ -18,6 +18,16 @@
 			border: 1px dashed;
 			border-radius: 8px;
 		}
+		.mensajereenvio {
+			background: #e9ffe1;
+			color: #19400b;
+			padding: 9px;
+			margin-top: 20px;
+			display: block;
+			border: 1px dotted #19400b;
+			border-radius: 5px;
+			text-align: center;
+		}
 	</style>
 	<div class="container">
 		<div class="row mt-5 principal">
@@ -185,7 +195,7 @@
 						<button class="btn btn-primary btn-xl">Facturar</button><?php
 					//}?>
 				</form>
-				<div id="facturaresults">
+				<div id="facturaresults" class="mt-4">
 				
 				</div>				
 			</div>
