@@ -191,9 +191,6 @@ function create_cliente($datos){
 add_action('wp_ajax_reenviofactura','reenviofactura');
 add_action('wp_ajax_nopriv_reenviofactura','reenviofactura');
 function reenviofactura(){
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
 	$dir = dirname( __FILE__ );
 	$uid=$_POST['uid'];
 	$url3=site_url().'/facturas/pdf/'.$uid;
@@ -205,7 +202,7 @@ function reenviofactura(){
 	$storeLocation2 = $dir.'/pdf/swissgroupegc_'.$uid.'.xml';
 	$xmlcont = file_get_contents($url4);
 	file_put_contents($storeLocation2, $xmlcont);
-	
+	define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
 	$mailer = WC()->mailer();
 	$email=$_POST['email']; 
 	$subject="Reenvío Factura en Swiss Group EGC";
