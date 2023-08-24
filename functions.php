@@ -784,32 +784,25 @@ add_filter('the_excerpt', 'custom_short_excerpt');
 
 
 function ba_rewrite() {
-   add_rewrite_rule('^promociones/foto/([^/]*)/?' , 'index.php?pagename=promociones&foto=$matches[1]','top');
-   add_rewrite_rule('^promociones/galeria/?' , 'index.php?pagename=promociones&galeria=1','top');
-   add_rewrite_rule('^promociones/descargas/dieta?' , 'index.php?pagename=promociones&descargas=dieta','top');
+	add_rewrite_rule('^promociones/foto/([^/]*)/?' , 'index.php?pagename=promociones&foto=$matches[1]','top');
+	add_rewrite_rule('^promociones/galeria/?' , 'index.php?pagename=promociones&galeria=1','top');
+	add_rewrite_rule('^promociones/descargas/dieta?' , 'index.php?pagename=promociones&descargas=dieta','top');
+    add_rewrite_rule('^en/sign-up/([^/]*)/?' , 'index.php?pagename=sign-up&lang=en&numempresario=$matches[1]','top'); 
+	add_rewrite_rule('^inscripcion/([^/]*)/?' , 'index.php?pagename=inscripcion&numempresario=$matches[1]','top'); 
+	add_rewrite_rule('^fr/sinscrire/([^/]*)/?' , 'index.php?pagename=sinscrire&lang=fr&numempresario=$matches[1]','top'); 
    
-   
-   add_rewrite_rule('^en/sign-up/([^/]*)/?' , 'index.php?pagename=sign-up&lang=en&numempresario=$matches[1]','top'); 
-   add_rewrite_rule('^inscripcion/([^/]*)/?' , 'index.php?pagename=inscripcion&numempresario=$matches[1]','top'); 
-   add_rewrite_rule('^fr/sinscrire/([^/]*)/?' , 'index.php?pagename=sinscrire&lang=fr&numempresario=$matches[1]','top'); 
-   
-   
-   add_rewrite_rule('^en/distributor/([^/]*)/?' , 'index.php?pagename=distributor&lang=en&numdistribuidor=$matches[1]','top'); 
-   add_rewrite_rule('^distribuidor/([^/]*)/?' , 'index.php?pagename=distribuidor&numdistribuidor=$matches[1]','top');
-   add_rewrite_rule('^fr/le-distributeur/([^/]*)/?' , 'index.php?pagename=le-distributeur&lang=fr&numdistribuidor=$matches[1]','top'); 
-   
-   
-   add_rewrite_rule('^en/microsite/([^/]*)/?' , 'index.php?pagename=micrositio&lang=en&numsocio=$matches[1]','top'); 
-   add_rewrite_rule('^micrositio/([^/]*)/?' , 'index.php?pagename=micrositio&numsocio=$matches[1]','top'); 
-   add_rewrite_rule('^fr/microsite/([^/]*)/?' , 'index.php?pagename=le-micrositio&lang=fr&numsocio=$matches[1]','top');
-
+	add_rewrite_rule('^en/distributor/([^/]*)/?' , 'index.php?pagename=distributor&lang=en&numdistribuidor=$matches[1]','top'); 
+	add_rewrite_rule('^distribuidor/([^/]*)/?' , 'index.php?pagename=distribuidor&numdistribuidor=$matches[1]','top');
+	add_rewrite_rule('^fr/le-distributeur/([^/]*)/?' , 'index.php?pagename=le-distributeur&lang=fr&numdistribuidor=$matches[1]','top'); 
+      
+	add_rewrite_rule('^en/microsite/([^/]*)/?' , 'index.php?pagename=micrositio&lang=en&numsocio=$matches[1]','top'); 
+	add_rewrite_rule('^micrositio/([^/]*)/?' , 'index.php?pagename=micrositio&numsocio=$matches[1]','top'); 
+	add_rewrite_rule('^fr/microsite/([^/]*)/?' , 'index.php?pagename=le-micrositio&lang=fr&numsocio=$matches[1]','top');
 	add_rewrite_rule('^api/([^/]*)/?' , 'api.php','top');
-	$template = str_replace( '%2F', '/', rawurlencode( get_template() ) );
+	
 	add_rewrite_rule('^facturas/pdf/([^/]*)/?','wp-content/themes/lebasi2020/functions/pdf.php?uid=$matches[1]','top');
-
 }
 add_action( 'init', 'ba_rewrite' );
-
 
 add_action('woocommerce_init','customer_country_base'); 
 function customer_country_base() {
@@ -831,14 +824,11 @@ function customer_country_base() {
 	}
 	//echo $siglas;
 	wcpbc_set_woocommerce_country($siglas);
-	
-	
 }
 
 add_action( 'wp', 'ts_redirect_product_pages', 99 );
  
 function ts_redirect_product_pages() {
-     
     if ( is_product() ) {
 		$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
         wp_safe_redirect( $shop_page_url );
