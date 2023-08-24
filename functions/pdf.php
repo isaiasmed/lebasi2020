@@ -1,15 +1,19 @@
 <?php
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+	
 	$absolute_path = $_SERVER['DOCUMENT_ROOT'];
 	require_once($absolute_path.'/wp-load.php');
 	global $datos_key_factura;
-	$uid=$_GET['uid'];
+	echo $uid=$_GET['uid'];
 	
 	$url=$datos_key_factura['url']."/v4/cfdi40/".$uid."/pdf";
 	$fplugin=$datos_key_factura['fplugin'];
 	$key=$datos_key_factura['key'];
 	$secret=$datos_key_factura['secret'];
 	$serie=$datos_key_factura['serie'];
-	$ch = curl_init();
+	/*$ch = curl_init();
 
 	curl_setopt($ch, CURLOPT_URL, $url);
 	
@@ -37,4 +41,4 @@
 	header("Content-Transfer-Encoding: Binary");
 	
 	header('Content-disposition: inline; filename="' . $filename . '.pdf"');
-	echo $response;
+	echo $response;*/
