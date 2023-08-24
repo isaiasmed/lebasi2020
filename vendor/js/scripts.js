@@ -291,92 +291,116 @@ $(document).ready(function(){
 		if(xhr!=null){xhr.abort();}
 		xhr=$.post(ajaxurl,$(this).serialize(),function(response){
 			if(!response.error){
-				$items=`
-					<table id="rem" class="table table-condensed table-striped">
-						<tr>
-							<th>CveSat</th>
-							<th>SatUnidad</th>
-							<th>Sku</th>
-							<th>Cantidad</th>
-							<th>Producto</th>
-							<th>Prcio Unitario</th>
-							<th>Descuento</th>
-							<th>Importe</th>
-						</tr>
-				`;
-				$.each(response.items,function(a,b){
-					total=((b.Precio*b.Cantidad)-b.Descuento);
-					total=total.toFixed(2);
-					$items+=`
+				if(response.facturada){
+					$('#remisionf').fadeOut();
+					$('#facturaresults').html(`
+						<div class="alert">Este pedido ya se encuentra facturado</div><br>
+						<form id="reenviofacturaform">
+							<div class="form">
+								<input type="email" id="mailreenvio" name="email" class="mailnew form-control" value="" placeholder="Correo para reenvio de factura" required>
+							</div><br>
+							<input type="hidden" name="action" value="reenviofactura">
+							<input type="hidden" name="uid" value="`+response.facturada+`">
+							<button class="btn btn-primary btn-lg" id="reenviofactura" href="#" type="submit" data-uid="`+response.facturada+`" class="button">Reenviar Factura</a>
+						</form>
+					`);
+				}else{
+					$items=`
+						<table id="rem" class="table table-condensed table-striped">
+							<tr>
+								<th>CveSat</th>
+								<th>SatUnidad</th>
+								<th>Sku</th>
+								<th>Cantidad</th>
+								<th>Producto</th>
+								<th>Prcio Unitario</th>
+								<th>Descuento</th>
+								<th>Importe</th>
+							</tr>
+					`;
+					$.each(response.items,function(a,b){
+						total=((b.Precio*b.Cantidad)-b.Descuento);
+						total=total.toFixed(2);
+						$items+=`
+						
+							<tr>
+								<td>`+b.ClaveSat+`</td>
+								<td>`+b.ClaveUnidad+`</td>
+								<td>`+b.ClaveProducto+`</td>
+								<td>`+b.Cantidad+`</td>
+								<td>`+b.DescrProd+`</td>
+								<td>`+b.Precio+`</td>
+								<td>`+b.Descuento+`</td>
+								<td>`+ total +`</td>
+							</tr>
+						`
+					});
+					$items+='</table>';
+					$('#facturasol').prepend(`
+						<div class="datosrem">
+							<table id="rem" class="table table-bordered table-condensed">
+								<thead>
+									<tr>
+										<th>Almacen</th>
+										<th>Remision</th>
+										<th>Empresario</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>`+response.datas.ClaveSucursal+`</td>
+										<td>`+response.datas.NumRemision+`</td>
+										<td>`+response.datas.Razon+`</td>
+									</tr>
+									<tr>
+										<th colspan="3">Nota</th>
+									</tr>
+									<tr>
+										<td colspan="3">`+ $items+` </td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					`);
+					$('#razon').val(response.datas.Razon);
+					$('#rfc').val(response.datas.RFC);
+					$('#cp').val(response.datas.CodPostal);
+					$('#estado').val(response.datas.Estado);
+					$('#municipio').val(response.datas.Municipio);
+					$('#email').val(response.datas.Email);
+					$('#order').val(response.datas.ClaveSucursal + '-' + response.datas.NumRemision);
 					
-						<tr>
-							<td>`+b.ClaveSat+`</td>
-							<td>`+b.ClaveUnidad+`</td>
-							<td>`+b.ClaveProducto+`</td>
-							<td>`+b.Cantidad+`</td>
-							<td>`+b.DescrProd+`</td>
-							<td>`+b.Precio+`</td>
-							<td>`+b.Descuento+`</td>
-							<td>`+ total +`</td>
-						</tr>
-					`
-				});
-				$items+='</table>';
-				$('#facturasol').prepend(`
-					<div class="datosrem">
-						<table id="rem" class="table table-bordered table-condensed">
-							<thead>
-								<tr>
-									<th>Almacen</th>
-									<th>Remision</th>
-									<th>Empresario</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>`+response.datas.ClaveSucursal+`</td>
-									<td>`+response.datas.NumRemision+`</td>
-									<td>`+response.datas.Razon+`</td>
-								</tr>
-								<tr>
-									<th colspan="3">Nota</th>
-								</tr>
-								<tr>
-									<td colspan="3">`+ $items+` </td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				`);
-				$('#razon').val(response.datas.Razon);
-				$('#rfc').val(response.datas.RFC);
-				$('#cp').val(response.datas.CodPostal);
-				$('#estado').val(response.datas.Estado);
-				$('#municipio').val(response.datas.Municipio);
-				$('#email').val(response.datas.Email);
-				$('#order').val(response.datas.ClaveSucursal + '-' + response.datas.NumRemision);
-				
-				$('#remisionf').fadeOut();
-				$('#facturasol').fadeIn();
-				$('#facturaresults').html('');
+					$('#remisionf').fadeOut();
+					$('#facturasol').fadeIn();
+					$('#facturaresults').html('');
+				}
 			}else{
 				$('#facturaresults').html('<i class="fa fa-exclamation" aria-hidden="true"></i> No se han podido validar los datos de la nota, revisa los datos por favor');
 			}
 		});
 		return false;
+	}).on('submit','#reenviofacturaform',function(){
+		if(xhr!=null){xhr.abort();}
+		xhr=$.post(ajaxurl,$(this).serialize(),function(response){
+			console.log(response);
+		});
+		return false;
 	}).on('submit','#facturasol',function(){
-	$('#facturaresults').html('<i class="fa fa-spin fa-refresh"></i> Procesando tu factura espera un momento...');
+		$('#facturaresults').html('<i class="fa fa-spin fa-refresh"></i> Procesando tu factura espera un momento...');
+		$('#facturasol').find('.button').prop('disabled',true);
 		if(xhr!=null){xhr.abort();}
 		xhr=$.post(ajaxurl,$(this).serialize(),function(response){
 			console.log(response);
 			if(response.respuesta_factura.response=="success"){
-				
+				$('#facturasol').find('.button').hide();
+				$('#facturaresults').html(response.html);
 			}else{
 				$('#facturaresults').html(`
 					<div class="error_fact">
 						` + response.respuesta_factura.message.message +`
 					</div>
 				`);
+				$('#facturasol').find('.button').prop('disabled',false);
 			}
 		});
 		return false;

@@ -91,7 +91,8 @@ function getremisionf(){
 		ini_set('display_startup_errors', 1);
 		error_reporting(E_ALL);
 	
-	$query="select r.ClaveSucursal,r.NumRemision,concat(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Razon,RFC,CodPostal,Estado,Municipio,Email,p.ClaveProducto,p.DescrProd,dr.Cantidad,dr.Precio,dr.Descuento,p.ClaveSat,p.ClaveUnidad,p.IVA from mex_remision r
+	
+	$query="select r.Factura,r.ClaveSucursal,r.NumRemision,concat(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Razon,RFC,CodPostal,Estado,Municipio,Email,p.ClaveProducto,p.DescrProd,dr.Cantidad,dr.Precio,dr.Descuento,p.ClaveSat,p.ClaveUnidad,p.IVA from mex_remision r
 		left join app_empresario e 
 		on r.NumEmpresario = e.NumEmpresario and r.Paisempresario = e.ClavePais
 		left join mex_det_remision dr
@@ -101,27 +102,33 @@ function getremisionf(){
 		where r.ClaveSucursal='".$_POST['sucursal']."' and r.NumRemision=".$_POST['NumRemision'];
 	$_POST['query']=$query;
 	$rem=db($query);
+	
 	$_POST['error']=true;
 	$_POST['datas']=false;
 	if($rem){
-		$remp=array(
-			"Razon"=>$rem[0]['Razon'],
-			"RFC"=>$rem[0]['RFC'],
-			"CodPostal"=>$rem[0]['CodPostal'],
-			"ClaveSucursal"=>$rem[0]['ClaveSucursal'],
-			"NumRemision"=>$rem[0]['NumRemision'],
-			"Municipio"=>$rem[0]['Municipio'],
-			"Estado"=>$rem[0]['Estado'],
-			"Email"=>$rem[0]['Email'],
-		);
-		$_POST['datas']=$remp;
-		foreach($rem as $c){
-			unset($c['Razon']);
-			unset($c['RFC']);
-			unset($c['CodPostal']);
-			$_POST['items'][]=$c;
+		if($rem[0]['Factura']!=""){
+			$_POST['facturada']=$rem[0]['Factura'];
+			$_POST['error']=false;
+		}else{
+			$remp=array(
+				"Razon"=>$rem[0]['Razon'],
+				"RFC"=>$rem[0]['RFC'],
+				"CodPostal"=>$rem[0]['CodPostal'],
+				"ClaveSucursal"=>$rem[0]['ClaveSucursal'],
+				"NumRemision"=>$rem[0]['NumRemision'],
+				"Municipio"=>$rem[0]['Municipio'],
+				"Estado"=>$rem[0]['Estado'],
+				"Email"=>$rem[0]['Email'],
+			);
+			$_POST['datas']=$remp;
+			foreach($rem as $c){
+				unset($c['Razon']);
+				unset($c['RFC']);
+				unset($c['CodPostal']);
+				$_POST['items'][]=$c;
+			}
+			$_POST['error']=false;
 		}
-		$_POST['error']=false;
 	}
 	wp_send_json($_POST);
 }
@@ -179,6 +186,40 @@ function create_cliente($datos){
 		update_user_meta( $user_id, 'factura_client',$data->Data->UID);
 	}
 	return $response;
+}
+
+add_action('wp_ajax_reenviofactura','reenviofactura');
+add_action('wp_ajax_nopriv_reenviofactura','reenviofactura');
+function reenviofactura(){
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+	$dir = dirname( __FILE__ );
+	$uid=$_POST['uid'];
+	$url3=site_url().'/facturas/pdf/'.$uid;
+	$url4=site_url().'/facturas/xml/'.$uid;
+	$storeLocation = $dir.'/pdf/swissgroupegc_'.$uid.'.pdf';
+	$pdfcont = file_get_contents($url3);
+	file_put_contents($storeLocation, $pdfcont);
+	
+	$storeLocation2 = $dir.'/pdf/swissgroupegc_'.$uid.'.xml';
+	$xmlcont = file_get_contents($url4);
+	file_put_contents($storeLocation2, $xmlcont);
+	
+	$mailer = WC()->mailer();
+	$email=$_POST['email']; 
+	$subject="Reenvío Factura en Swiss Group EGC";
+	$heading="Factura Swiss Group EGC";
+	$message="<h3>¡Te hemos reenviado tu factura!</h3><h5>Adjunto en este e-mail se encuentra el CFDI que has solicitado en formato PDF y XML.</h5><h5>Gracias por confiar en Lebasi</h5>";
+	
+	$wrapped_message = $mailer->wrap_message($heading, $message);
+	$wc_email = new WC_Email;
+	$html_message = $wc_email->style_inline($wrapped_message);
+	$mailer->send( $email, $subject, $html_message, HTML_EMAIL_HEADERS, array($storeLocation,$storeLocation2) );
+	unlink($storeLocation);
+	unlink($storeLocation2);
+	echo '<pre>'.print_r($_POST,1).'</pre>';
+	wp_die();
 }
 
 function create_factura($datos){	
@@ -286,18 +327,27 @@ function ajaxgetfactura(){
 		$_POST['respuesta_factura']=$factura;
 		if($factura['response']=="success"){
 			$uid=$factura['uid'];
+			$order=$_POST['order'];
+			$orden=explode("-",$order);
+			$NumRemision=$orden[1];
+			$ClaveSucursal=$orden[0];
+			$query="update mex_remision set Factura='".$uid."' where NumRemision='".$NumRemision."' and ClaveSucursal='".$ClaveSucursal."'";
+			$resupd=db($query);
+			$_POST['update']=$resupd;
 			define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
 			$dir = dirname( __FILE__ );
-			$url=dirname( __FILE__ ).'/pdf.php?order='.$order_id.'&uid='.$uid;
-			$url2=dirname( __FILE__ ).'/xml.php?order='.$order_id.'&uid='.$uid;
+			$url=dirname( __FILE__ ).'/pdf.php?uid='.$uid;
+			$url2=dirname( __FILE__ ).'/xml.php?uid='.$uid;
+			$url3=site_url().'/facturas/pdf/'.$uid;
+			$url4=site_url().'/facturas/xml/'.$uid;
 			//$url=site_url()."/wp-content/plugins/benefis_factura2022/pdf.php?order=".$order_id."&uid=".$uid;
 			//$url2=site_url()."/wp-content/plugins/benefis_factura2022/xml.php?order=".$order_id."&uid=".$uid;
-			$storeLocation = $dir.'pdf/swissgroupegc_'.$uid.'.pdf';
-			$pdfcont = file_get_contents($url);
+			$storeLocation = $dir.'/pdf/swissgroupegc_'.$uid.'.pdf';
+			$pdfcont = file_get_contents($url3);
 			file_put_contents($storeLocation, $pdfcont);
 			
-			$storeLocation2 = $dir.'pdf/swissgroupegc_'.$uid.'.xml';
-			$xmlcont = file_get_contents($url2);
+			$storeLocation2 = $dir.'/pdf/swissgroupegc_'.$uid.'.xml';
+			$xmlcont = file_get_contents($url4);
 			file_put_contents($storeLocation2, $xmlcont);
 			
 			$mailer = WC()->mailer();
@@ -320,11 +370,11 @@ function ajaxgetfactura(){
 			<p style="word-break: break-word;"><strong>Sello SAT</strong>:<br><?php echo $factura['SAT']['SelloSAT'];?></p>
 			<p style="word-break: break-word;"><strong>Sello CFD</strong>:<br><?php echo $factura['SAT']['SelloCFD'];?></p>
 			<br>
-			<p><a class="button" href="<?php echo $url2;?>">BAJAR XML</a></p>
+			<p><a class="button" href="<?php echo $url4;?>">BAJAR XML</a></p>
 			
-			<object style="width:100%; height:800px;" data="<?php echo $url;?>" type="application/pdf">
-				<embed src="<?php echo $url;?>" type="application/pdf" />
-				<iframe src="<?php echo $url;?>" width="100%" height="800px"></iframe>
+			<object style="width:100%; height:800px;" data="<?php echo $url3;?>" type="application/pdf">
+				<embed src="<?php echo $url3;?>" type="application/pdf" />
+				<iframe src="<?php echo $url3;?>" width="100%" height="800px"></iframe>
 			</object><?php
 			$html=ob_get_contents();
 			ob_end_clean();

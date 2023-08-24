@@ -800,7 +800,8 @@ function ba_rewrite() {
 	add_rewrite_rule('^fr/microsite/([^/]*)/?' , 'index.php?pagename=le-micrositio&lang=fr&numsocio=$matches[1]','top');
 	add_rewrite_rule('^api/([^/]*)/?' , 'api.php','top');
 	
-	add_rewrite_rule('^facturas/pdf/([^/]*)/?','wp-content/themes/lebasi2020/functions/pdf.php?uid=$matches[1]','top');
+	add_rewrite_rule('^facturas/pdf/([^/]*)/?','wp-content/themes/lebasi2020/functions/pdf.php?uid=$1','top');
+	add_rewrite_rule('^facturas/xml/([^/]*)/?','wp-content/themes/lebasi2020/functions/xml.php?uid=$1','top');
 }
 add_action( 'init', 'ba_rewrite' );
 
