@@ -2670,8 +2670,8 @@ function premioindi(){
 
 function db($sql){
 	//echo $sql;
-	//$mysqli = new mysqli('localhost', 'lebasi_app', 'Lactoserum22###', 'lebasi_app');
-	$mysqli = new mysqli('localhost:10016', 'root', 'root', 'lebasi_app');
+	$mysqli = new mysqli('localhost', 'lebasi_app', 'Lactoserum22###', 'lebasi_app');
+	//$mysqli = new mysqli('localhost:10016', 'root', 'root', 'lebasi_app');
 	
 	mysqli_set_charset($mysqli, 'utf8');
 	if(!$mysqli) {
