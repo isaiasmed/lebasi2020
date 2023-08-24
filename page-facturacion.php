@@ -28,6 +28,14 @@
 			border-radius: 5px;
 			text-align: center;
 		}
+		.almacen {
+			padding: 10px;
+			text-align: center;
+			margin: 10px;
+			font-size: 20px;
+			color: #404040;
+			font-weight: bold;
+		}
 	</style>
 	<div class="container">
 		<div class="row mt-5 principal">

@@ -294,8 +294,8 @@ $(document).ready(function(){
 				if(response.facturada){
 					$('#remisionf').fadeOut();
 					$('#facturaresults').html(`
-						<div class="alert">Este pedido ya se encuentra facturado</div><br>
-						<div>Almacen:`+response.sucursal+` Remisión: `+ response.NumRemision+`</div>
+						<div class="error_fact">Este pedido ya se encuentra facturado</div>
+						<div class="almacen">Almacen:`+response.sucursal+` Remisión: `+ response.NumRemision+`</div>
 						<form id="reenviofacturaform">
 							<div class="form">
 								<input type="email" id="mailreenvio" name="email" class="mailnew form-control" value="" placeholder="Correo para reenvio de factura" required>
