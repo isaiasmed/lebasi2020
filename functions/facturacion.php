@@ -92,12 +92,12 @@ function getremisionf(){
 		error_reporting(E_ALL);
 	
 	
-	$query="select r.Factura,r.ClaveSucursal,r.NumRemision,concat(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Razon,RFC,CodPostal,Estado,Municipio,Email,p.ClaveProducto,p.DescrProd,dr.Cantidad,dr.Precio,dr.Descuento,p.ClaveSat,p.ClaveUnidad,p.IVA from mex_remision r
+	$query="select r.Fecha,r.Factura,r.ClaveSucursal,r.NumRemision,concat(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Razon,RFC,CodPostal,Estado,Municipio,Email,p.ClaveProducto,p.DescrProd,dr.Cantidad,dr.Precio,dr.Descuento,p.ClaveSat,p.ClaveUnidad,p.IVA from mex_remision r
 		left join app_empresario e 
 		on r.NumEmpresario = e.NumEmpresario and r.Paisempresario = e.ClavePais
 		left join mex_det_remision dr
 		on dr.NumRemision = r.NumRemision and dr.ClaveSucursal = r.ClaveSucursal
-		left join mex_producto p 
+		left join mex_producto p
         on p.ClaveProducto = dr.ClaveProducto
 		where r.ClaveSucursal='".$_POST['sucursal']."' and r.NumRemision=".$_POST['NumRemision'];
 	$_POST['query']=$query;

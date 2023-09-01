@@ -344,6 +344,7 @@ $(document).ready(function(){
 									<tr>
 										<th>Almacen</th>
 										<th>Remision</th>
+										<th>Fecha</th>
 										<th>Empresario</th>
 									</tr>
 								</thead>
@@ -351,6 +352,7 @@ $(document).ready(function(){
 									<tr>
 										<td>`+response.datas.ClaveSucursal+`</td>
 										<td>`+response.datas.NumRemision+`</td>
+										<td>`+response.datas.Fecha+`</td>
 										<td>`+response.datas.Razon+`</td>
 									</tr>
 									<tr>
