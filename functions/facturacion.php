@@ -110,25 +110,30 @@ function getremisionf(){
 			$_POST['facturada']=$rem[0]['Factura'];
 			$_POST['error']=false;
 		}else{
-			$remp=array(
-				"Razon"=>$rem[0]['Razon'],
-				"RFC"=>$rem[0]['RFC'],
-				"CodPostal"=>$rem[0]['CodPostal'],
-				"ClaveSucursal"=>$rem[0]['ClaveSucursal'],
-				"NumRemision"=>$rem[0]['NumRemision'],
-				"Municipio"=>$rem[0]['Municipio'],
-				"Estado"=>$rem[0]['Estado'],
-				"Email"=>$rem[0]['Email'],
-				"Fecha"=>$rem[0]['Fecha'],
-			);
-			$_POST['datas']=$remp;
-			foreach($rem as $c){
-				unset($c['Razon']);
-				unset($c['RFC']);
-				unset($c['CodPostal']);
-				$_POST['items'][]=$c;
+			if($rem[0]['Fecha']>date('2023-09-01 00:00:00')){
+				$remp=array(
+					"Razon"=>$rem[0]['Razon'],
+					"RFC"=>$rem[0]['RFC'],
+					"CodPostal"=>$rem[0]['CodPostal'],
+					"ClaveSucursal"=>$rem[0]['ClaveSucursal'],
+					"NumRemision"=>$rem[0]['NumRemision'],
+					"Municipio"=>$rem[0]['Municipio'],
+					"Estado"=>$rem[0]['Estado'],
+					"Email"=>$rem[0]['Email'],
+					"Fecha"=>$rem[0]['Fecha'],
+				);
+				$_POST['datas']=$remp;
+				foreach($rem as $c){
+					unset($c['Razon']);
+					unset($c['RFC']);
+					unset($c['CodPostal']);
+					$_POST['items'][]=$c;
+				}
+				$_POST['error']=false;
+			}else{
+				$_POST['fecha']=true;
+				$_POST['error']=true;
 			}
-			$_POST['error']=false;
 		}
 	}
 	wp_send_json($_POST);
