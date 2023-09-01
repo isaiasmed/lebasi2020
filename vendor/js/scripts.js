@@ -378,7 +378,11 @@ $(document).ready(function(){
 					$('#facturaresults').html('');
 				}
 			}else{
-				$('#facturaresults').html('<i class="fa fa-exclamation" aria-hidden="true"></i> No se han podido validar los datos de la nota, revisa los datos por favor');
+				if(response.fecha){
+					$('#facturaresults').html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> No se puede facturar esta remisión, ha vencido el plazo de vencimiento de la clave.');
+				}else{
+					$('#facturaresults').html('<i class="fa fa-exclamation" aria-hidden="true"></i> No se han podido validar los datos de la nota, revisa los datos por favor');
+				}
 			}
 		});
 		return false;
