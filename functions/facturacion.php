@@ -14,10 +14,10 @@ function inicio_facturacion_lebasi() {
 	}else{
 		$datos_key_factura['url']='https://api.factura.com';
 		$datos_key_factura['fplugin']= '9d4095c8f7ed5785cb14c0e3b033eeb8252416ed';
-		$datos_key_factura['key']='JDJ5JDEwJGNXNDMvcFJ4c0doOTZ5QnR1andrSGUzN0tJUGE3N2hYL2RZQzJ4WU5oVi4wQWJGLzVYNXd1';
-		$datos_key_factura['secret']='JDJ5JDEwJHVwdXFkNHRSODRIOXMuekdJSG45Uy5vbmJ6UkQ5elQyaVlUNXFFTVphMTB4b2lwRWRLMmdL';
-		$datos_key_factura['serie']=429872;
-		$datos_key_factura['env']="_4.0";
+		$datos_key_factura['key']='JDJ5JDEwJGRCcFRFb0tQSy93VVJ6Q1UwYVZVa3VZUUpvVjJGVXp1QThEUnNCWVBHV2IuOWtIamVBZGJL';
+		$datos_key_factura['secret']='JDJ5JDEwJHZvUVB2V0xyRWJBMFVzNTMzWExmSXV4L0U1QkNxMmhXdGdINHlyM2hUSE9JMW9ORXNKNWZH';
+		$datos_key_factura['serie']=966050;
+		$datos_key_factura['env']=" 4.0";
 	}
 }
 add_action('after_setup_theme', 'inicio_facturacion_lebasi');
