@@ -119,6 +119,7 @@ function getremisionf(){
 				"Municipio"=>$rem[0]['Municipio'],
 				"Estado"=>$rem[0]['Estado'],
 				"Email"=>$rem[0]['Email'],
+				"Fecha"=>$rem[0]['Fecha'],
 			);
 			$_POST['datas']=$remp;
 			foreach($rem as $c){
