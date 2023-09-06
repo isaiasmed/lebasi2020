@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'lebasi' ); ?>
 <div class="container contenido">
-	<h2 class="h1 my-5" ><?php the_title();?></h2>
+	<h2 class="h1 my-5 single-prod-title" ><?php the_title();?></h2>
 	<div class="row">
 		<div class="col-12 col-md-8 sidebar mt-1">
 		<?php
