@@ -16,7 +16,7 @@ if ( have_posts() ) {
 			</div><?php
 		else:?>
 		<div class="container contenido">
-			<h2 class="h1 my-5" ><?php the_title();?></h2>
+			<h2 class="h1 my-5 contitle" ><?php the_title();?></h2>
 			<div class="row">
 				<div class="col-12 col-md-8"><?php
 					if(!is_checkout()):?>

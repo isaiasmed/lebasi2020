@@ -6,7 +6,7 @@ if ( have_posts() ) {
 		$featured_image_url = get_the_post_thumbnail_url(get_the_ID(),'full');?>
 
 		<div class="container contenido">
-			<h2 class="h1 my-5" ><?php the_title();?></h2>
+			<h2 class="h1 my-5 blog-title" ><?php the_title();?></h2>
 			<div class="row">
 				<div class="col-12 col-md-8"><?php
 					if(!is_checkout()):?>

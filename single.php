@@ -4,7 +4,7 @@ if ( have_posts() ) {
 	while ( have_posts() ) {
 		the_post(); ?>
 		<div class="container contenido">
-			<h2 class="h1 my-5" ><?php the_title();?></h2>
+			<h2 class="h1 my-5 single-title" ><?php the_title();?></h2>
 			<div class="row">
 				<div class="col-12 col-md-8"><?php the_content(); ?></div>
 				<!--Sidebar-->
