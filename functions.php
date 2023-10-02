@@ -2571,7 +2571,11 @@ add_action('wp_ajax_consultapremios','consultapremios');
 add_action('wp_ajax_nopriv_consultapremios','consultapremios');
 function consultapremios(){
 	global $wpdb;
-	$query="select * from {$wpdb->prefix}premiospromo where level != 0 order by level desc";
+	
+	$query="select * from {$wpdb->prefix}premiospromo_p where level != 0 order by level desc";
+	if($_POST['tipo']=='empresario'){
+		$query="select * from {$wpdb->prefix}premiospromo where level != 0 order by level desc";
+	}
 	$res=$wpdb->get_results($query);
 	wp_send_json($res);
 }
@@ -2586,13 +2590,14 @@ function revisarem(){
 	//*/
 	global $wpdb;
 	$texto_buscar = $_POST['nombre'];
-	$query="SELECT * FROM app_empresario WHERE (SOUNDEX(CONCAT(TRIM(Nombre), ' ', TRIM(APaterno), ' ', TRIM(AMaterno))) = SOUNDEX('".$texto_buscar."'))
+	$querys="SELECT * FROM app_empresario WHERE (SOUNDEX(CONCAT(TRIM(Nombre), ' ', TRIM(APaterno), ' ', TRIM(AMaterno))) = SOUNDEX('".$texto_buscar."'))
 		OR (SOUNDEX(CONCAT(TRIM(Nombre), ' ', TRIM(AMaterno), ' ', TRIM(APaterno))) = SOUNDEX('".$texto_buscar."'))
 		OR (SOUNDEX(CONCAT(TRIM(APaterno), ' ', TRIM(Nombre), ' ', TRIM(AMaterno))) = SOUNDEX('".$texto_buscar."'))
 		OR (SOUNDEX(CONCAT(TRIM(APaterno), ' ', TRIM(AMaterno), ' ', TRIM(Nombre))) = SOUNDEX('".$texto_buscar."'))
 		OR (SOUNDEX(CONCAT(TRIM(AMaterno), ' ', TRIM(Nombre), ' ', TRIM(APaterno))) = SOUNDEX('".$texto_buscar."'))
 		OR (SOUNDEX(CONCAT(TRIM(AMaterno), ' ', TRIM(APaterno), ' ', TRIM(Nombre))) = SOUNDEX('".$texto_buscar."'));";
-	$res=db($query);
+	$query[]=$querys;
+	$res=db($querys);
 	$data=array();
 	
 	foreach($res as $er){
@@ -2603,6 +2608,7 @@ function revisarem(){
 	$suc=$remision[0];
 	$NumRemision=$remision[1];
 	$rem="select * from mex_remision where ClaveSucursal='".$suc."' and NumRemision='".$NumRemision."'";
+	$query[]=$rem;
 	$resrem=db($rem);
 	$msgf="";
 	$rmereg="SELECT * FROM `lebasimx_promojul23` where remision='".$_POST['remision']."';";
@@ -2613,7 +2619,7 @@ function revisarem(){
 			if(!in_array($resrem[0]['NumEmpresario'],$data)){
 				$msgf="No se pudo validar la remisión, el nombre no coincide con los datos registrados";
 			}
-			if($resrem[0]['MesComision']!="JUL/2023"){
+			if($resrem[0]['MesComision']!="SEP/2023"){
 				$msgf="La remision no puede participar en la promoción";
 			}
 			if($resrem[0]['Monto']<1300){
@@ -2634,19 +2640,61 @@ function revisarem(){
 }
 
 
+add_action('wp_ajax_revisarem2','revisarem2');
+add_action('wp_ajax_nopriv_revisarem2','revisarem2');
+function revisarem2(){
+	/*
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+	//*/
+	global $wpdb;
+	
+	$remision=explode('-',$_POST['remision']);
+	$suc=$remision[0];
+	$NumRemision=$remision[1];
+	$rem="select * from mex_det_rem_botes where Lote='".$_POST['lote']."' and Caja='".$_POST['caja']."'";
+	$query[]=$rem;
+	$resrem=db($rem);
+	$msgf="";
+	$rmereg="SELECT * FROM `lebasimx_promojul23` where remision='".$_POST['lote']."-".$_POST['caja'].$_POST['bote']."';";
+	$resreg=$wpdb->get_row($rmereg);
+	if($resrem){
+		if($resreg){
+			if(count($resreg)>24){
+				$msgf="Esta caja ya participo complemante en la promoción";
+			}
+		}else{
+
+		}
+	}else{
+		$msgf="No se ha validado el Lote y Caja, el bote aun no se ha remisionado";
+	}
+	$ret=array('resultados'=>$resrem,'query'=>$query,'remision'=>$_POST,'mensajes'=>$msgf,'data'=>$data);	
+	//echo '<pre>'.print_r($ret,1).'</pre>';
+	wp_send_json($ret);
+}
+
+
 add_action('wp_ajax_premioindi','premioindi');
 add_action('wp_ajax_nopriv_premioindi','premioindi');
 function premioindi(){
 	/*ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);*/
-
 	global $wpdb;
-	$query="select * from {$wpdb->prefix}premiospromo where level != 0 and stock > 0 ORDER BY RAND() LIMIT 1;";
+	$table=$wpdb->prefix."premiospromo_p";
+	$slices=14;
+	if($_POST['tipo']=='empresario'){
+		$table=$wpdb->prefix."premiospromo";
+		$slices=15;
+	}
+	
+	$query="select * from {$table} where level != 0 and stock > 0 ORDER BY RAND() LIMIT 1;";
 	$res=$wpdb->get_row($query,ARRAY_A);
 	$last[]=$wpdb->last_error;
 	$uni=uniqid();
-	$wpdb->update($wpdb->prefix.'premiospromo',array("stock"=>$res['stock']-1),array('id'=>$res['id']));
+	$wpdb->update($table,array("stock"=>$res['stock']-1),array('id'=>$res['id']));
 	$last[]=$wpdb->last_error;
 	$wpdb->insert($wpdb->prefix.'promojul23',array(
 		"uniqid"=>$uni,
@@ -2661,13 +2709,54 @@ function premioindi(){
 		"query"=>$query,
 		"res"=>$res,
 		"level"=>(int)$res['level'],
-		"grados"=>((($res['level']*1)-1)*(360/14))+7,
+		"grados"=>((($res['level']*1)-1)*(360/$slices))+6,
 		//"grados"=>(((1*1)-1)*(360/14))+7,
 		"uniqid"=>$uni,
 		"last"=>$last
 	));
 }
 
+
+
+add_action('wp_ajax_premioindica2','premioindica2');
+add_action('wp_ajax_nopriv_premioindi','premioindica2');
+function premioindica2(){
+	/*ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);*/
+	global $wpdb;
+	$table=$wpdb->prefix."premiospromo_p";
+	$slices=14;
+	if($_POST['tipo']=='empresario'){
+		$table=$wpdb->prefix."premiospromo";
+		$slices=15;
+	}
+	
+	$query="select * from {$table} where level != 0 and stock > 0 ORDER BY RAND() LIMIT 1;";
+	$res=$wpdb->get_row($query,ARRAY_A);
+	$last[]=$wpdb->last_error;
+	$uni=uniqid();
+	$wpdb->update($table,array("stock"=>$res['stock']-1),array('id'=>$res['id']));
+	$last[]=$wpdb->last_error;
+	$wpdb->insert($wpdb->prefix.'promojul23',array(
+		"uniqid"=>$uni,
+		"premio"=>$res['premio'],
+		"nombre"=>$_POST['nombre'],
+		"correo"=>$_POST['correo'],
+		"celular"=>$_POST['telefono'],
+		"remision"=>$_POST['lote']."-".$_POST['caja']."-".$_POST['bote'],
+	));
+	$last[]=$wpdb->last_error;
+	wp_send_json(array(
+		"query"=>$query,
+		"res"=>$res,
+		"level"=>(int)$res['level'],
+		"grados"=>((($res['level']*1)-1)*(360/$slices))+6,
+		//"grados"=>(((1*1)-1)*(360/14))+7,
+		"uniqid"=>$uni,
+		"last"=>$last
+	));
+}
 function db($sql){
 	//echo $sql;
 	$domain=$_SERVER['SERVER_NAME'];

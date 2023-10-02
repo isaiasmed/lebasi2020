@@ -21,81 +21,85 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<h4>
-	HOLA BIENVENIDO A LEBASI
-</h4>
+<style>
+	.banner {
+		height: 300px;
+		overflow: hidden;
+		position: relative;
+		display: block;
+		box-shadow: 0px 4px 10px #808080;
+	}
+	.video-foreground, .video-background iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		pointer-events: none;
+		height: 920px;
+	}
+	.video-foreground {
+		top: -210px !important;
+	}
+	#vidtop-content {
+		background: rgba(0,0,0,0.5);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.woocommerce img, .woocommerce-page img {
+		max-height: 125px !important;
+	}
+	.logo img {
+		max-width: 800px;
+		margin: 90px auto;
+		display: block;
+	}
+	.welcome {
+		background: #fefefe;
+		padding: 0.5rem 4rem;
+		box-shadow: 2px 2px 5px #00000021;
+		color: #7b7b7b;
+		font-size: 1.2rem;
+		line-height: 1.5rem;
+		text-align: justify;
+	}
+	.home {
+		text-align: center;
+		margin-top: 50px;
+		color: #001c39;
+		font-size: 4rem;
+		font-weight: bold;
+		padding-bottom: 30px;
+	}
+</style>
+<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="parallax-window banner" data-parallax="scroll" data-image-src="">
+		<div class="video-background">
+		  <div class="video-foreground">
+			 <iframe src="https://www.youtube.com/embed/SyIQr1j4B1s?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=SyIQr1j4B1s&mute=1" frameborder="0" allowfullscreen></iframe>
+		  </div>
+		</div>
 
-<div class="bg-info text-white text-center p-3 mb-2">Hemos Cambiado nuestra página, para que sea mas funcional, aqui podras ver tus pedidos, direcciones, etc.</div>
-
-<?php if(wcmo_get_current_user_roles()=='inscripcion'):?>
-<div class="bg-warning text-white text-center p-5 mb-3">Te encuentras en proceso de inscripción te pedimos completar, realizando la compra de tu kit de inscripción.</div>
-<?php endif; ?>
-
-
-<?php if(wcmo_get_current_user_roles()=='customer'):
-//Revisar si ya tiene lo cupones
-$cu2020 = get_user_meta( get_current_user_id(),'cupones2020',true );
-if($cu2020){
-	echo '<h3>Estos son tus cupones generados:</h3>';?>
-	<table class="table table-bordered">
-		<tr>
-			<th>Cupon</th>
-			<th>Utilizado</th>
-			<th>Descuento generado</th>
-		</tr>
-	<?php
-	$query="SELECT * FROM `lebasimx_postmeta` where meta_value = ".get_current_user_id()." and meta_key = 'userid' ";
-	$q=$wpdb->get_results($query);
-	$pr=0;
-	if($q){
-		foreach($q as $qq){
-			$cupont=get_the_title($qq->post_id);
-			$coupon = new WC_Coupon($coupon_code);
-			$tot=lebasi_get_sales_by_coupon($cupont);
-			$prt=$tot*0.20;
-			$pr=$pr+$prt;?>
-			<tr>
-				<td><?php echo $cupont;?></td>
-				<td><?php echo $tot>0?'Sí':'No';?></td>
-				<td><?php echo wc_price($prt);?></td>
-			</tr><?php
-			//echo '<pre>'.print_r($coupon,1).'</pre>';
-		}
-	}?>
-	<tfoot>
-		<tr>
-			<th colspan="2">Total de descuento para próxima compra</th>
-			<th><?php echo wc_price($pr);?> <?php echo $pr>0?'<button class="btn btn-primary reclamo">Reclamar</button>':''?></th>
-		</tr>
-	</tfoot>
-	</table><?php
-} ?>
-<?php endif; ?>
-
-
-
-<a href="<?php echo site_url('tienda');?>" class="btn btn-danger">Ir a la tienda</a>
-
-<?php
-	/**
-	 * My Account dashboard.
-	 *
-	 * @since 2.6.0
-	 */
-	do_action( 'woocommerce_account_dashboard' );
-
-	/**
-	 * Deprecated woocommerce_before_my_account action.
-	 *
-	 * @deprecated 2.6.0
-	 */
-	do_action( 'woocommerce_before_my_account' );
-
-	/**
-	 * Deprecated woocommerce_after_my_account action.
-	 *
-	 * @deprecated 2.6.0
-	 */
-	do_action( 'woocommerce_after_my_account' );
-
-/* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
+		<div id="vidtop-content">
+			<div class="vid-info">
+				<h1>
+					<div class="logo">
+						<img src="https://lebasi.net/wp-content/themes/lebasinet2019/img/logo_bco.svg">
+					</div>
+				</h1>
+			</div>
+		</div>
+	</div>
+	<h2 class="home">Bienvenido(a) a tu oficina virtual Lebasi</h2>
+	<div class="welcome">
+		<p>Estimado Representante,</p>
+		<p>Para  mí  es  un  placer  darte  una  cordial  bienvenida  a  Lebasi,  te  comento que has tomado la decisión correcta para mejorar tu salud y bienestar.</p>
+		<p>Después de haber comprobado los beneficios de este maravilloso producto, que es conocido en Suiza como “la fuente de la juventud”, decidí que mi meta era compartirlo con el mundo, por lo que en 1998 fundé Lebasi. Actualmente México y Argentina se conforman de 250 mil representantes independientes, en Estados Unidos contamos solamente con 6 mil representantes, esto puede darte una idea del gran potencial de negocio con el que contamos en el mercado americano.</p>
+		<p>Haz tomado la decisión correcta en el momento justo, ya que nuestros  planes  de  crecimiento  pretenden  convertir  este  mercado  en  el  más importante para la compañía.</p>
+		<p>Esta tarea requiere del personal adecuado para llevarse a cabo, que posea la correcta visión y actitud.</p>
+		<p>Nuevamente ¡Bienvenido a Lebasi! y espero que pronto ¡celebremos tus éxitos!.</p>
+		<img src="<?php echo get_stylesheet_directory_uri();?>/images/firma_chenel.jpg" width="260">
+	</div>
+</div>

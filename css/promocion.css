@@ -1,7 +1,7 @@
 body {
-	background-image: linear-gradient(rgba(230, 241, 255, 0.65), rgba(151, 203, 249, 0.65)), url('../images/Fondo_Landing page2023.jpg');
+	background-image: url('../images/Fondo_Landing page102023.png');
 	background-attachment: fixed;
-	background-position: center;
+	background-position: unset;
 	background-size: cover;
 	font-family: 'Raleway', sans-serif;
 }

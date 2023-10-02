@@ -3,7 +3,7 @@
 function inicio_facturacion_lebasi() {
     // Define y establece la variable en true el ambiente es de pruebas, en false el entorno es de produccion conectado y con validez al SAT
     global $datos_key_factura;
-	$modo_sandbox=false;
+	$modo_sandbox=true;
 	if($modo_sandbox){
 		$datos_key_factura['url']='https://sandbox.factura.com/api';
 		$datos_key_factura['fplugin']= '9d4095c8f7ed5785cb14c0e3b033eeb8252416ed';

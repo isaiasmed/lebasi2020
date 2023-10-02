@@ -12,7 +12,23 @@ $(function(){
 	  }
 	}
 	
-	
+	$('.btn-premios').on('click',function(){
+		$('#promo23pub').show();
+		$('#promo23').hide();
+		if($(this).data('tipo')=="empresario"){
+			$('#promo23pub').hide();
+			$('#promo23').show();
+		}
+		$('.texto').fadeOut();
+		$('.forms').fadeIn();
+		$('#imgsrc').val($(this).data('src'));
+		$('#tipo').val($(this).data('tipo'));
+		
+		console.log($(this).data('src'));
+		juego();
+		return false;
+	});
+
 	$("#2show").on('click', function() {
 		$("#element2").show();
 		$("#element").hide();
@@ -121,12 +137,33 @@ $(function(){
 	
 	
 	$('#promo23').submit(function(){
+		btn=$(this).find('button');
+		btn.html('<i class="fa fa-spin fa-refresh"></i> Revisando información...').prop('disabled',true);
 		$.post(ajaxurl,{'action':'revisarem','remision':$('#remision').val(),'nombre':$('#nombre').val()},function(response){
 			if(response.mensajes==""){
-				$('#promo23').hide(1000)
+				$('#promo23').hide(1000);
+				$('.forms').hide();
+				$('#concurso').show(1000);
 				$('#game-container').show(1000);
-			}else{
+			}else{ 
 				alert(response.mensajes);
+				btn.html('Enviar').prop('disabled',false);
+			}
+		});
+		return false;
+	});
+	$('#promo23pub').submit(function(){
+		btn=$(this).find('button');
+		btn.html('<i class="fa fa-spin fa-refresh"></i> Revisando información...').prop('disabled',true);
+		$.post(ajaxurl,{'action':'revisarem2','lote':$('#lote').val(),'caja':$('#caja').val(),'bote':$('#bote').val()},function(response){
+			if(response.mensajes==""){
+				$('#promo23pub').hide(1000);
+				$('.forms').hide();
+				$('#concurso').show(1000);
+				$('#game-container').show(1000);
+			}else{ 
+				alert(response.mensajes);
+				btn.html('Enviar').prop('disabled',false);
 			}
 		});
 		return false;
