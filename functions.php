@@ -2619,7 +2619,7 @@ function revisarem(){
 			if(!in_array($resrem[0]['NumEmpresario'],$data)){
 				$msgf="No se pudo validar la remisión, el nombre no coincide con los datos registrados";
 			}
-			if($resrem[0]['MesComision']!="SEP/2023"){
+			if($resrem[0]['MesComision']!="OCT/2023"){
 				$msgf="La remision no puede participar en la promoción";
 			}
 			if($resrem[0]['Monto']<1300){
@@ -2653,7 +2653,7 @@ function revisarem2(){
 	$remision=explode('-',$_POST['remision']);
 	$suc=$remision[0];
 	$NumRemision=$remision[1];
-	$rem="select * from mex_det_rem_botes where Lote='".$_POST['lote']."' and Caja='".$_POST['caja']."'";
+	$rem="select * from mex_det_rem_botes where Lote='".$_POST['lote']."' and Caja='".$_POST['caja']."' and Lote in (1003,1004)";
 	$query[]=$rem;
 	$resrem=db($rem);
 	$msgf="";

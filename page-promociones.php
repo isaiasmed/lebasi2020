@@ -290,7 +290,7 @@ get_header('lebasi');
 		</form>
 	</div>
 	<div id="concurso" style="display:none;">
-		<div id="game-container" style="background: rgba(0, 0, 0,0); min-height: 600px !important; margin: 5px auto 0px; width: 100%;">
+		<div id="game-container" style="background: rgba(0, 0, 0,0); min-height: 600px !important; margin: 85px auto 0px; width: 100%;">
 			<h3 id="msgpromo">Da click en el centro de la ruleta</h3>
 		</div>
 		<!--<div class="container">
