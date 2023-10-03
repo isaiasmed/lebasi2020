@@ -2653,7 +2653,7 @@ function revisarem2(){
 	$remision=explode('-',$_POST['remision']);
 	$suc=$remision[0];
 	$NumRemision=$remision[1];
-	$rem="select * from mex_det_rem_botes where Lote='".$_POST['lote']."' and Caja='".$_POST['caja']."' and Lote in (1003,1004)";
+	$rem="select * from mex_det_rem_botes where Lote='".$_POST['lote']."' and Caja='".$_POST['caja']."' and Lote in (1002,1003,1004)";
 	$query[]=$rem;
 	$resrem=db($rem);
 	$msgf="";
