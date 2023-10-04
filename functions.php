@@ -2711,7 +2711,7 @@ function premioindi(){
 		"query"=>$query,
 		"res"=>$res,
 		"level"=>(int)$res['level'],
-		"grados"=>((($res['level']*1)-1)*(360/$slices)+15),
+		"grados"=>((($res['level']*1)-1)*(360/$slices)+3),
 		"slices"=>$slices,
 		//"grados"=>(((1*1)-1)*(360/14))+7,
 		"uniqid"=>$uni,

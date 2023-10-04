@@ -126,8 +126,8 @@ get_header('lebasi');
 	<div class="texto">
 		<h2 class="texto-inicio">Por favor elige la sección correcta</h2>
 		<div style="display:flex;flex-flow: row;align-items: center;justify-content: center; margin-top:50px;">
-			<a href="#" class="btn btn-premios" data-tipo="empresario" data-src="<?php echo site_url();?>/wp-content/themes/lebasi2020/images/wheel-oct.png">Empresario</a>
-			<a href="#" class="btn btn-premios" data-tipo="publico" data-src="<?php echo site_url();?>/wp-content/themes/lebasi2020/images/wheel-oct2.png">Público</a>
+			<a href="#" class="btn btn-premios" data-tipo="empresario" data-src="<?php echo site_url();?>/wp-content/themes/lebasi2020/images/wheel-emp.png">Empresario</a>
+			<a href="#" class="btn btn-premios" data-tipo="publico" data-src="<?php echo site_url();?>/wp-content/themes/lebasi2020/images/wheel-pub.png">Público</a>
 		</div>
 	</div>
 	<div class="forms" style="display:none;">
