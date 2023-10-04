@@ -2707,15 +2707,75 @@ function premioindi(){
 		"remision"=>$_POST['remision'],
 	));
 	$last[]=$wpdb->last_error;
+
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => 'https://graph.facebook.com/v17.0/133915323138885/messages',
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => '',
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 0,
+	  CURLOPT_FOLLOWLOCATION => true,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => 'POST',
+	  CURLOPT_POSTFIELDS =>'{
+		"messaging_product": "whatsapp",
+		"to": "52'.$_POST['telefono'].'",
+		"type": "template",
+		"template": {
+			"name": "premio",
+			"language": {
+				"code": "es_MX"
+			},
+			"components": [
+				{
+					"type" : "header",
+					"parameters": [
+					{    
+						"type": "image",
+						"image": {
+						"link": "https://lebasi.com.mx/wp-content/themes/lebasi2020/images/registrate.png"
+						}
+					}
+					]
+				},
+				{
+					"type": "body",
+					"parameters": [
+						{
+							"type": "text",
+							"text": "'.$res['premio'].'"
+						},{
+							"type": "text",
+							"text": "'.$uni.'"
+						}
+					]
+				}
+			]
+		}
+	}
+	',
+	  CURLOPT_HTTPHEADER => array(
+		'Content-Type: application/json',
+		'Authorization: Bearer EAAWIuzXqaZAwBO9FX6HieNzQhpD1FzWoczyJx2ZCxWr5uVBvzBerHoHla4F52HQacjlWMsmDZBNPpAkOfeMG7hpXnCtJzigwEuOlftjKlkzGZAzwqXZCBanq1AV6ybWxYmD6jF5WKugOYwZAwoPAFb7BJtOZBjX7ZCURIW8CciVGrZARc5bdb0SF8GqQSI1zA866q'
+	  ),
+	));
+
+	$response = curl_exec($curl);
+	wp_mail('sistema@lebasigroup.com','Ganaron premio','<pre>'.print_r($res,1).'</pre>'.$response);
+	curl_close($curl);
+
+
 	wp_send_json(array(
 		"query"=>$query,
 		"res"=>$res,
 		"level"=>(int)$res['level'],
 		"grados"=>((($res['level']*1)-1)*(360/$slices)+3),
 		"slices"=>$slices,
-		//"grados"=>(((1*1)-1)*(360/14))+7,
 		"uniqid"=>$uni,
-		"last"=>$last
+		"last"=>$last,
+		"messages"=>$response
 	));
 }
 
@@ -2749,6 +2809,66 @@ function premioindica2(){
 		"celular"=>$_POST['telefono'],
 		"remision"=>$_POST['lote']."-".$_POST['caja']."-".$_POST['bote'],
 	));
+
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => 'https://graph.facebook.com/v17.0/133915323138885/messages',
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => '',
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 0,
+	  CURLOPT_FOLLOWLOCATION => true,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => 'POST',
+	  CURLOPT_POSTFIELDS =>'{
+		"messaging_product": "whatsapp",
+		"to": "52'.$_POST['telefono'].'",
+		"type": "template",
+		"template": {
+			"name": "premio",
+			"language": {
+				"code": "es_MX"
+			},
+			"components": [
+				{
+					"type" : "header",
+					"parameters": [
+					{    
+						"type": "image",
+						"image": {
+						"link": "https://lebasi.com.mx/wp-content/themes/lebasi2020/images/registrate.png"
+						}
+					}
+					]
+				},
+				{
+					"type": "body",
+					"parameters": [
+						{
+							"type": "text",
+							"text": "'.$res['premio'].'"
+						},{
+							"type": "text",
+							"text": "'.$uni.'"
+						}
+					]
+				}
+			]
+		}
+	}
+	',
+	  CURLOPT_HTTPHEADER => array(
+		'Content-Type: application/json',
+		'Authorization: Bearer EAAWIuzXqaZAwBO9FX6HieNzQhpD1FzWoczyJx2ZCxWr5uVBvzBerHoHla4F52HQacjlWMsmDZBNPpAkOfeMG7hpXnCtJzigwEuOlftjKlkzGZAzwqXZCBanq1AV6ybWxYmD6jF5WKugOYwZAwoPAFb7BJtOZBjX7ZCURIW8CciVGrZARc5bdb0SF8GqQSI1zA866q'
+	  ),
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	
+
 	$last[]=$wpdb->last_error;
 	wp_send_json(array(
 		"query"=>$query,
@@ -2757,7 +2877,8 @@ function premioindica2(){
 		"grados"=>((($res['level']*1)-1)*(360/$slices))+6,
 		//"grados"=>(((1*1)-1)*(360/14))+7,
 		"uniqid"=>$uni,
-		"last"=>$last
+		"last"=>$last,
+		"message"=>$response
 	));
 }
 function db($sql){
