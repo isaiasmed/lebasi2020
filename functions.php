@@ -2619,7 +2619,7 @@ function revisarem(){
 			if(!in_array($resrem[0]['NumEmpresario'],$data)){
 				$msgf="No se pudo validar la remisión, el nombre no coincide con los datos registrados";
 			}
-			if($resrem[0]['MesComision']!="SEP/2023"){
+			if($resrem[0]['MesComision']!="OCT/2023"){
 				$msgf="La remision no puede participar en la promoción";
 			}
 			if($resrem[0]['Monto']<1300){
@@ -2764,6 +2764,7 @@ function premioindi(){
 
 	$response = curl_exec($curl);
 	wp_mail('sistema@lebasigroup.com','Ganaron premio','<pre>'.print_r($res,1).'</pre>'.$response);
+	wp_mail('programacion@lebasigroup.com','Ganaron premio','<pre>'.print_r($res,1).'</pre>'.$response);
 	curl_close($curl);
 
 
