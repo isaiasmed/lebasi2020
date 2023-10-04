@@ -25,6 +25,8 @@ $(function(){
 		$('#tipo').val($(this).data('tipo'));
 		
 		console.log($(this).data('src'));
+		console.log($(this).data('tipo'));
+		console.log($('#tipo').val());
 		juego();
 		return false;
 	});

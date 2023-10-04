@@ -2619,7 +2619,7 @@ function revisarem(){
 			if(!in_array($resrem[0]['NumEmpresario'],$data)){
 				$msgf="No se pudo validar la remisión, el nombre no coincide con los datos registrados";
 			}
-			if($resrem[0]['MesComision']!="OCT/2023"){
+			if($resrem[0]['MesComision']!="SEP/2023"){
 				$msgf="La remision no puede participar en la promoción";
 			}
 			if($resrem[0]['Monto']<1300){
@@ -2685,12 +2685,14 @@ function premioindi(){
 	global $wpdb;
 	$table=$wpdb->prefix."premiospromo_p";
 	$slices=14;
+	$levels=" and level in (6,7,8,9)";
 	if($_POST['tipo']=='empresario'){
 		$table=$wpdb->prefix."premiospromo";
 		$slices=15;
+		$levels=" and level in (2,3,4,5,6,7) ";
 	}
 	
-	$query="select * from {$table} where level != 0 and stock > 0 ORDER BY RAND() LIMIT 1;";
+	$query="select * from {$table} where level != 0 and stock > 0 ".$levels." ORDER BY RAND() LIMIT 1;";
 	$res=$wpdb->get_row($query,ARRAY_A);
 	$last[]=$wpdb->last_error;
 	$uni=uniqid();
@@ -2709,7 +2711,8 @@ function premioindi(){
 		"query"=>$query,
 		"res"=>$res,
 		"level"=>(int)$res['level'],
-		"grados"=>((($res['level']*1)-1)*(360/$slices))+6,
+		"grados"=>((($res['level']*1)-1)*(360/$slices)+15),
+		"slices"=>$slices,
 		//"grados"=>(((1*1)-1)*(360/14))+7,
 		"uniqid"=>$uni,
 		"last"=>$last

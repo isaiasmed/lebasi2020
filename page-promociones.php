@@ -190,7 +190,7 @@ get_header('lebasi');
 				<div class="offset-md-4 col-8">
 					<input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 					<input type="hidden" name="action" value="premioindi">
-					<input type="hidden" name="tipo" value="publico">
+					<input type="hidden" name="tipo" value="empresario">
 					<button id="promoenvio" name="submit" type="submit" class="btn btn-secondary">Enviar</button>
 				</div>
 				
