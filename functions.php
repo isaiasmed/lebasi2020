@@ -2683,14 +2683,9 @@ function premioindi(){
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);*/
 	global $wpdb;
-	$table=$wpdb->prefix."premiospromo_p";
-	$slices=14;
-	$levels=" and level in (6,7,8,9)";
-	if($_POST['tipo']=='empresario'){
 		$table=$wpdb->prefix."premiospromo";
 		$slices=15;
 		$levels=" and level in (2,3,4,5,6,7) ";
-	}
 	
 	$query="select * from {$table} where level != 0 and stock > 0 ".$levels." ORDER BY RAND() LIMIT 1;";
 	$res=$wpdb->get_row($query,ARRAY_A);
@@ -2791,12 +2786,9 @@ function premioindica2(){
 	global $wpdb;
 	$table=$wpdb->prefix."premiospromo_p";
 	$slices=14;
-	if($_POST['tipo']=='empresario'){
-		$table=$wpdb->prefix."premiospromo";
-		$slices=15;
-	}
+	$levels=" and level in (6,7,8,9)";
 	
-	$query="select * from {$table} where level != 0 and stock > 0 ORDER BY RAND() LIMIT 1;";
+	$query="select * from {$table} where level != 0 and stock > 0 ".$levels." ORDER BY RAND() LIMIT 1;";
 	$res=$wpdb->get_row($query,ARRAY_A);
 	$last[]=$wpdb->last_error;
 	$uni=uniqid();
@@ -2868,7 +2860,8 @@ function premioindica2(){
 	$response = curl_exec($curl);
 
 	curl_close($curl);
-	
+	wp_mail('sistema@lebasigroup.com','Ganaron premio','<pre>'.print_r($res,1).'</pre>'.$response);
+	wp_mail('programacion@lebasigroup.com','Ganaron premio','<pre>'.print_r($res,1).'</pre>'.$response);
 
 	$last[]=$wpdb->last_error;
 	wp_send_json(array(
