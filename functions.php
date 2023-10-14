@@ -2685,7 +2685,7 @@ function premioindi(){
 	global $wpdb;
 		$table=$wpdb->prefix."premiospromo";
 		$slices=15;
-		$levels=" and level in (2,3,4,5,6,7) ";
+		$levels=" and level in (2,3,4,5,6,7,12,13) ";
 	
 	$query="select * from {$table} where level != 0 and stock > 0 ".$levels." ORDER BY RAND() LIMIT 1;";
 	$res=$wpdb->get_row($query,ARRAY_A);
