@@ -136,11 +136,11 @@
 						case 'MX':
 							$paist='México';
 							$datos='Tel. 449 922 2222
-								</br>ventasweb@lebasigroup.com
-								</br>Corporativo: Av. Las Américas 1604
+								</br>ventasweb@lebasigroup.com';
+								/*<!--</br>Corporativo: Av. Las Américas 1604
 								</br>Jardines de Santa Elena,
-								</br>20236 Aguascalientes, Ags.
-								</br>México';
+								</br>20236 Aguascalientes, Ags.-->
+								</br>México';*/
 							$phone="5214491555144";
 							
 						break;
