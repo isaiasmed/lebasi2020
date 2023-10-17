@@ -141,10 +141,10 @@
 						case 'MX':
 							$paist='México';
 							$datos='Tel. 449 922 2222
-								</br>ventasweb@lebasigroup.com
-								</br>Av Aguascalientes
+								</br>ventasweb@lebasigroup.com'
+								/*</br>Av Aguascalientes
 								</br>20238 Aguascalientes, Ags.
-								</br>México';
+								</br>México'*/;
 							$phone="5214491555144";
 							
 						break;
