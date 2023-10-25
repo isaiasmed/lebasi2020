@@ -110,7 +110,7 @@ function getremisionf(){
 			$_POST['facturada']=$rem[0]['Factura'];
 			$_POST['error']=false;
 		}else{
-			if($rem[0]['Fecha']>date('2023-09-01 00:00:00')){
+			if($rem[0]['Fecha']>date('2023-10-01 00:00:00')){
 				$remp=array(
 					"Razon"=>$rem[0]['Razon'],
 					"RFC"=>$rem[0]['RFC'],
