@@ -105,7 +105,7 @@ get_header('lebasi');
 				margin-top:10px;
 			}
 			.btn.btn-premios {
-				margin: 0 5px;
+				margin: 0 0px;
 				padding: 5px 15px;
 				width: 160px;
 			}
