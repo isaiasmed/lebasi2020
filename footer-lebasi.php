@@ -69,10 +69,10 @@
 				<div class="col-12 col-md-6 p-4">
 					<div  class="row">
 						<div class="col-12">
-							<a href="<?php  echo site_url('politicas-de-privacidad-de-la-informacion');?>">Política de Privacidad</a>
+							<a style="font-size: 21px;color: #bd0e0e;text-transform: uppercase;" href="<?php  echo site_url('politicas-de-privacidad-de-la-informacion');?>">Política de Privacidad</a>
 						</div>
 						<div class="col-12">
-							<a href="<?php  echo site_url('politicas-comerciales');?>">Política Comercial</a>
+							<a style="font-size: 21px;color: #bd0e0e;text-transform: uppercase;" href="<?php  echo site_url('politicas-comerciales');?>">Política Comercial</a>
 						</div>
 					</div>
 				</div>
