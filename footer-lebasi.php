@@ -67,7 +67,14 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-6 p-4">
-					<?php echo do_shortcode('[mc4wp_form id="4047"]');?>
+					<div  class="row">
+						<div class="col-12">
+							<a href="<?php  echo site_url('politicas-de-privacidad-de-la-informacion');?>">Política de Privacidad</a>
+						</div>
+						<div class="col-12">
+							<a href="<?php  echo site_url('politicas-comerciales');?>">Política Comercial</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
