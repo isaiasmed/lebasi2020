@@ -2778,7 +2778,7 @@ function premioindi(){
 
 
 add_action('wp_ajax_premioindica2','premioindica2');
-add_action('wp_ajax_nopriv_premioindi','premioindica2');
+add_action('wp_ajax_nopriv_premioindica2','premioindica2');
 function premioindica2(){
 	/*ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
