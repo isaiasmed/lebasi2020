@@ -2658,14 +2658,26 @@ function revisarem2(){
 	$resrem=db($rem);
 	$msgf="";
 	$rmereg="SELECT * FROM `lebasimx_promojul23` where remision='".$_POST['lote']."-".$_POST['caja'].$_POST['bote']."';";
+	$rmereg2="SELECT * FROM `lebasimx_promojul23` where correo='".$_POST['correo']."'";
+	$rmereg2="SELECT * FROM `lebasimx_promojul23` where celular='".$_POST['telefono']."'";
 	$resreg=$wpdb->get_row($rmereg);
+	$resreg2=$wpdb->get_row($rmereg2);
+	$resreg3=$wpdb->get_row($rmereg3);
 	if($resrem){
 		if($resreg){
 			if(count($resreg)>24){
 				$msgf="Esta caja ya participo complemante en la promoción";
 			}
 		}else{
-
+			if($resreg2){
+				$msgf="Este correo ya participo en la promoción";
+			}else{
+				if($resreg3){
+					$msgf="Este teléfono ya participo en la promoción";
+				}else{
+					
+				}
+			}
 		}
 	}else{
 		$msgf="No se ha validado el Lote y Caja, el bote aun no se ha remisionado";
