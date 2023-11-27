@@ -221,7 +221,7 @@ get_header('lebasi');
 						<i class="fa fa-envelope-o"></i>
 					  </div>
 					</div> 
-					<input id="correo" name="correo" type="email" class="form-control" required placeholder="Introduce un correo electrónico">
+					<input id="correop" name="correo" type="email" class="form-control" required placeholder="Introduce un correo electrónico">
 				  </div>
 				</div>
 			</div>
@@ -234,7 +234,7 @@ get_header('lebasi');
 						<i class="fa fa-phone"></i>
 					  </div>
 					</div> 
-					<input id="telefono" name="telefono" pattern="[0-9]{10}" type="txt" class="form-control" required placeholder="Introduce tu telefono o celular">
+					<input id="telefonop" name="telefono" pattern="[0-9]{10}" type="txt" class="form-control" required placeholder="Introduce tu telefono o celular">
 				  </div>
 				</div>
 			</div>

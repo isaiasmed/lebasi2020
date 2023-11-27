@@ -157,7 +157,7 @@ $(function(){
 	$('#promo23pub').submit(function(){
 		btn=$(this).find('button');
 		btn.html('<i class="fa fa-spin fa-refresh"></i> Revisando información...').prop('disabled',true);
-		$.post(ajaxurl,{'action':'revisarem2','lote':$('#lote').val(),'caja':$('#caja').val(),'bote':$('#bote').val(),'correo':$('#correo').val(),'telefono':$('#telefono').val()},function(response){
+		$.post(ajaxurl,{'action':'revisarem2','lote':$('#lote').val(),'caja':$('#caja').val(),'bote':$('#bote').val(),'correo':$('#correop').val(),'telefono':$('#telefonop').val()},function(response){
 			if(response.mensajes==""){
 				$('#promo23pub').hide(1000);
 				$('.forms').hide();
