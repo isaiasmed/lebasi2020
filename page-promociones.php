@@ -116,7 +116,9 @@ get_header('lebasi');
 
 <body>
 
-<div id="presentacion">
+<div id="presentacion"><?php
+	wp_die('Por el momento no hay promociones');
+	wp_footer();?>
 	<div class="imagen" style="display:flex;flex-flow: column;justify-content: center;align-items: center;min-width: 40%;">
 		<img id="imagen1" src="<?php echo get_template_directory_uri().'/images/promotext.png';?>" width="350">
 		<img id="imagen2" src="<?php echo get_template_directory_uri().'/images/premios_102023.png';?>" width="350">
